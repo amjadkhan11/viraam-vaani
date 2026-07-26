@@ -1,0 +1,166 @@
+  generator client {
+    provider = "prisma-client-js"
+  }
+
+  datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+  }
+
+  model User {
+    id          String       @id @default(cuid())
+    name        String
+    email       String       @unique
+    phone       String
+    className   String
+    password    String
+    status      UserStatus   @default(PENDING)
+    createdAt   DateTime     @default(now())
+    monthlyFees MonthlyFee[]
+  }
+
+  model Admission {
+    id         String   @id @default(cuid())
+    name       String
+    fatherName String
+    mobile     String
+    email      String?
+    className  String
+    schoolName String?
+    address    String?
+    status     String   @default("Pending")
+    createdAt  DateTime @default(now())
+  }
+
+  model StudyMaterial {
+    id          String   @id @default(uuid())
+    title       String
+    subject     String
+    className   String
+    description String?
+    pdfUrl      String
+    createdAt   DateTime @default(now())
+  }
+
+  model Result {
+    id                 String   @id @default(uuid())
+    studentName        String
+    fatherName         String
+    email              String
+    rollNumber         String
+    className          String
+    examName           String
+    session            String
+    subjects           Json
+    totalMarksObtained Float
+    totalMaxMarksPool  Float
+    percentage         Float
+    divisionStatus     String
+    resultStatus       String
+    classRank          String
+    performanceRemarks String
+    createdAt          DateTime @default(now())
+  }
+
+  model Notification {
+    id         String   @id @default(uuid())
+    title      String
+    message    String
+    expiryDate DateTime
+    createdAt  DateTime @default(now())
+  }
+
+  model Admin {
+    id        String   @id @default(cuid())
+    username  String   @unique
+    password  String
+    createdAt DateTime @default(now())
+  }
+
+
+  model FeeStructure {
+    id            String   @id @default(uuid())
+    className     String
+    amount        Float
+    year          Int?   
+     
+    effectiveFrom DateTime @default(now())
+    isActive      Boolean  @default(true)
+    monthlyFees   MonthlyFee[]
+  }
+
+  model MonthlyFee {
+  id             String        @id @default(uuid())
+  userId         String
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  feeStructureId String?
+  feeStructure   FeeStructure? @relation(fields: [feeStructureId], references: [id], onDelete: SetNull)
+  month          String
+  year           Int
+  amount         Float
+  status         FeeStatus     @default(UNPAID)
+  utrNumber      String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  @@index([userId])
+  @@index([status])
+  @@index([month, year])
+}
+
+  enum UserStatus {
+    PENDING
+    APPROVED
+    REJECTED
+    BLOCKED
+  }
+
+  enum FeeStatus {
+    UNPAID
+    PENDING
+    PAID
+    REJECTED
+    OVERDUE
+  }
+model SarvamApplication {
+  id              String   @id @default(uuid())
+  schoolName      String
+  principalName   String
+  studentStrength Int
+  email           String
+  phone           String
+  address         String
+  district        String
+  state           String
+  pincode         String
+  reason          String
+  createdAt       DateTime @default(now())
+}
+
+
+model AdmitCard {
+  id               String   @id @default(uuid())
+  // 👤 Student Info
+  studentName      String
+  rollNumber       String   @unique
+  registrationNo   String?  // Optional (vikalpik)
+  parentName       String?  // Optional
+  dob              String   // Date of Birth
+  batch            String   // Class/Batch
+  email            String   // 🔑 Isse student login/verify karega
+  
+  // 📝 Exam Details
+  examName         String
+  examDate         String
+  examDay          String
+  examTime         String
+  reportingTime    String
+  duration         String
+  
+  // 📍 Center Details
+  centerName       String
+  centerAddress    String
+  roomNo           String?
+  seatNo           String?
+
+  createdAt        DateTime @default(now())
+}
