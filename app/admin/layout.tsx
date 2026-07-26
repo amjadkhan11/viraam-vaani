@@ -36,7 +36,7 @@ export default function AdminLayout({
       // 5 minutes inactivity ke baad logout
       timer = setTimeout(() => {
         logout();
-      }, 5 * 60 * 1000);
+      }, 10* 1000);
     };
 
     // User activity detect karna
