@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Mail, Lock, Eye, EyeOff, Sparkles, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
@@ -16,11 +16,11 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = async (e: any) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -51,7 +51,7 @@ export default function LoginPage() {
           customClass: { popup: "rounded-3xl font-sans" }
         });
       }
-    } catch (err) {
+    } catch {
       Swal.fire({
         icon: "error",
         title: "CONNECTION ERROR",
@@ -65,12 +65,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-auto md:h-screen w-full flex flex-col md:grid md:grid-cols-12 bg-slate-100 font-sans relative selection:bg-indigo-500/20">
+    <div className="h-auto md:h-screen w-full flex flex-col md:grid md:grid-cols-12 bg-slate-100 font-sans relative selection:bg-blue-600/20">
 
       {/* DESKTOP LEFT SIDE PANEL */}
-      <div className="hidden md:flex md:col-span-6 bg-gradient-to-br from-blue-950 via-indigo-950 to-indigo-900 relative flex-col justify-between p-12 text-white overflow-hidden shadow-2xl z-20">
+      <div className="hidden md:flex md:col-span-6 bg-gradient-to-br from-blue-950 via-slate-950 to-blue-900 relative flex-col justify-between p-12 text-white overflow-hidden shadow-2xl z-20">
         <div className="absolute top-[-20%] left-[-20%] w-[500px] h-[500px] rounded-full bg-blue-600/20 blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-indigo-500/20 blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-blue-500/20 blur-[100px] pointer-events-none" />
 
         {/* CINEMATIC PERFECTLY ROUND LOGO (DESKTOP) */}
         <div className="flex items-center gap-4 relative z-10">
@@ -86,17 +86,16 @@ export default function LoginPage() {
           </div>
           <div>
             <span className="text-2xl font-black tracking-tight text-white block">Viraam Vaani</span>
-    
           </div>
         </div>
 
         <div className="my-auto space-y-8 relative z-10">
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-xs font-semibold text-amber-300 shadow-inner">
-              <Sparkles size={14} className="animate-pulse" />
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-xs font-semibold text-blue-200 shadow-inner">
+              <Sparkles size={14} className="animate-pulse text-blue-300" />
               Welcome Back
             </div>
-            <h2 className="text-3xl lg:text-4xl font-black tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-indigo-200 bg-clip-text text-transparent">
+            <h2 className="text-3xl lg:text-4xl font-black tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-blue-200 bg-clip-text text-transparent">
               Continue Your <br />
               Learning Journey.
             </h2>
@@ -119,18 +118,16 @@ export default function LoginPage() {
       </div>
 
       {/* RIGHT SIDE PANEL */}
-      {/* 🛠️ ADJUSTED: Added pb-8 on mobile to leave a decent visual gap before footer */}
       <div className="flex-1 md:col-span-6 flex flex-col justify-start md:justify-center items-center relative overflow-hidden px-4 w-full pt-6 pb-8 h-auto md:h-full">
         
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-indigo-200/40 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-amber-200/30 blur-[120px] pointer-events-none" />
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-200/40 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-slate-200/50 blur-[120px] pointer-events-none" />
 
-        {/* 🛠️ ADJUSTED: Added mb-6 on mobile to smoothly separate the badge from the incoming footer */}
         <div className="w-full max-w-md flex flex-col items-center relative z-10 mt-0 mb-6">
           
           {/* CINEMATIC LOGO HERO (MOBILE VIEW) */}
           <div className="flex md:hidden flex-col items-center text-center mb-3">
-            <div className="relative w-12 h-12 rounded-full bg-gradient-to-b from-slate-950 to-slate-900 p-0.5 border border-indigo-900/20 shadow-md flex items-center justify-center overflow-hidden flex-shrink-0">
+            <div className="relative w-12 h-12 rounded-full bg-gradient-to-b from-slate-950 to-slate-900 p-0.5 border border-blue-900/20 shadow-md flex items-center justify-center overflow-hidden flex-shrink-0">
               <Image
                 src="/images/logo.jpeg"
                 alt="Viraam Vaani Logo"
@@ -141,9 +138,9 @@ export default function LoginPage() {
               />
             </div>
             <h1 className="text-lg font-black tracking-tight text-slate-950 mt-1 leading-none">
-              Viraam <span className="text-indigo-700">Vaani</span>
+              Viraam <span className="text-blue-900">Vaani</span>
             </h1>
-            <p className="text-[8px] text-indigo-600 font-bold tracking-widest uppercase mt-0.5">Student Portal</p>
+            <p className="text-[8px] text-blue-700 font-bold tracking-widest uppercase mt-0.5">Student Portal</p>
           </div>
           
           <div className="w-full bg-white border-2 border-slate-200 rounded-[24px] p-5 md:p-8 shadow-xl relative overflow-hidden flex flex-col">
@@ -210,7 +207,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full mt-1 bg-gradient-to-r from-blue-900 to-indigo-900 hover:from-blue-950 hover:to-indigo-950 text-white py-2 rounded-xl text-xs font-black tracking-wide transition-all duration-200 shadow-md active:scale-[0.99] flex items-center justify-center gap-2 group disabled:opacity-50"
+                className="w-full mt-1 bg-gradient-to-r from-blue-900 via-slate-900 to-blue-950 hover:from-blue-950 hover:to-slate-950 text-white py-2 rounded-xl text-xs font-black tracking-wide transition-all duration-200 shadow-md active:scale-[0.99] flex items-center justify-center gap-2 group disabled:opacity-50"
               >
                 {isLoading ? "Validating Portal..." : "Sign In"}
                 {!isLoading && <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform font-bold" />}
@@ -220,7 +217,7 @@ export default function LoginPage() {
 
             <div className="mt-3.5 pt-2 border-t-2 border-slate-100 text-center flex-shrink-0">
               <p className="text-[10px] text-slate-800 font-bold">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <button
                   type="button"
                   onClick={() => router.push("/register")}

@@ -18,7 +18,7 @@ import {
   ShieldAlert,
   CreditCard,
   HeartHandshake,
-  IdCard, // 👈 Admit card ke liye icon import kiya
+  IdCard,
 } from "lucide-react";
 
 export default function Navbar() {
@@ -153,17 +153,17 @@ export default function Navbar() {
       {/* 🚀 PREMIUM AUTO-LOGOUT POPUP (MODAL)      */}
       {/* ========================================== */}
       {showPopup && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md animate-fade-in">
-          <div className="w-full max-w-sm bg-white border-2 border-slate-100 rounded-3xl p-6 shadow-2xl text-center relative overflow-hidden transform scale-100 transition-all duration-300">
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fade-in">
+          <div className="w-full max-w-sm bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-2xl text-center relative overflow-hidden transform scale-100 transition-all duration-300">
             
             {/* Warning Glow Effect & Icon */}
-            <div className="w-16 h-16 bg-amber-50 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-amber-200/60 shadow-inner relative">
-              <ShieldAlert className="text-amber-500 animate-bounce" size={32} />
-              <span className="absolute inline-flex h-full w-full rounded-2xl bg-amber-400 opacity-10 animate-ping"></span>
+            <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-slate-200 shadow-inner relative">
+              <ShieldAlert className="text-blue-700 animate-bounce" size={32} />
+              <span className="absolute inline-flex h-full w-full rounded-2xl bg-blue-600 opacity-10 animate-ping"></span>
             </div>
 
             {/* Content */}
-            <h3 className="text-slate-950 font-black text-xl tracking-tight mb-1">Session Timeout</h3>
+            <h3 className="text-slate-900 font-black text-xl tracking-tight mb-1">Session Timeout</h3>
             <p className="text-xs text-slate-500 font-medium px-2 leading-relaxed">
               {popupMessage} Redirection to the safety hub portal in progress...
             </p>
@@ -175,7 +175,7 @@ export default function Navbar() {
             </div>
 
             {/* Visual Progress Countdown Line */}
-            <div className="absolute bottom-0 left-0 h-1.5 bg-gradient-to-r from-amber-500 to-amber-600 animate-progress-shrink" />
+            <div className="absolute bottom-0 left-0 h-1.5 bg-gradient-to-r from-blue-700 to-slate-900 animate-progress-shrink" />
           </div>
         </div>
       )}
@@ -187,7 +187,7 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-11 w-11 rounded-full bg-white flex items-center justify-center border border-slate-200/80 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-105 overflow-hidden">
+              <div className="relative h-11 w-11 rounded-full bg-white flex items-center justify-center border border-slate-200 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-105 overflow-hidden">
                 <div className="absolute inset-[3px] rounded-full border-[2.5px] border-dashed border-slate-800 opacity-90 animate-[spin_120s_linear_infinite]" />
                 
                 {/* Inner Solid Geometric 'A' Icon */}
@@ -204,8 +204,8 @@ export default function Navbar() {
               {/* 📝 TYPOGRAPHY & BRAND NAME */}
               <div className="flex flex-col justify-center leading-none">
                 <h1 className="font-black text-base lg:text-lg tracking-tight">
-                  <span className="text-blue-950 bg-gradient-to-r from-blue-950 to-slate-900 bg-clip-text">Viraam</span>{" "}
-                  <span className="text-amber-500 bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text">Vaani</span>
+                  <span className="text-blue-700 bg-gradient-to-r from-blue-700 to-slate-900 bg-clip-text">Viraam</span>{" "}
+                  <span className="text-slate-900 bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text">Vaani</span>
                 </h1>
               </div>
             </Link>
@@ -218,7 +218,7 @@ export default function Navbar() {
                 { href: "/study-material", label: "Study Material" },
                 { href: "/notifications", label: "Notifications", hasNotificationDot: true },
                 { href: "/about", label: "About" },
-                { href: "/sarvam", label: "Sarvam" ,icon: HeartHandshake}
+                { href: "/sarvam", label: "Sarvam", icon: HeartHandshake }
               ].map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -231,16 +231,16 @@ export default function Navbar() {
                         : "text-slate-600 hover:text-blue-900 hover:bg-white/60"
                     }`}
                   >
-                    {item.icon && <item.icon size={16} className="text-rose-600" />}
+                    {item.icon && <item.icon size={16} className="text-blue-600" />}
                     {item.label}
                     {item.hasNotificationDot && (
                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                       </span>
                     )}
                     {isActive && (
-                      <span className="absolute bottom-1 left-4 right-4 h-[2px] bg-gradient-to-r from-blue-900 to-indigo-700 rounded-full" />
+                      <span className="absolute bottom-1 left-4 right-4 h-[2px] bg-gradient-to-r from-blue-700 to-slate-900 rounded-full" />
                     )}
                   </Link>
                 );
@@ -252,19 +252,19 @@ export default function Navbar() {
               {!user ? (
                 <Link
                   href="/login"
-                  className="bg-gradient-to-r from-blue-900 to-indigo-700 text-white px-5 py-2 rounded-full font-semibold border-none outline-none shadow-md hover:shadow-lg transition-all duration-200"
+                  className="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-5 py-2 rounded-full font-semibold border-none outline-none shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   Login
                 </Link>
               ) : (
                 <button
                   onClick={() => setSidebarOpen(true)}
-                  className="flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 hover:border-amber-400 hover:bg-amber-50/20 transition-all duration-300 group shadow-sm"
+                  className="flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 hover:border-blue-600 hover:bg-slate-100 transition-all duration-300 group shadow-sm"
                 >
                   <span className="text-xs font-bold text-slate-700 group-hover:text-blue-900 transition-colors">
-                    Welcome, <span className="text-blue-900 font-extrabold capitalize">{getFirstName(user?.name)}</span> 👋
+                    Welcome, <span className="text-blue-700 font-extrabold capitalize">{getFirstName(user?.name)}</span> 👋
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-sm flex items-center justify-center shadow-md ring-2 ring-amber-200 group-hover:scale-105 transition-transform">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-700 to-slate-900 text-white font-black text-sm flex items-center justify-center shadow-md ring-2 ring-slate-200 group-hover:scale-105 transition-transform">
                     {user?.name?.charAt(0)?.toUpperCase() || "S"}
                   </div>
                 </button>
@@ -281,7 +281,7 @@ export default function Navbar() {
                   <span className="text-[10px] font-black text-slate-600 capitalize">
                     Hi, {getFirstName(user?.name)}
                   </span>
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs flex items-center justify-center ring-2 ring-amber-200">
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-r from-blue-700 to-blue-600 text-white font-black text-xs flex items-center justify-center ring-2 ring-slate-200">
                     {user?.name?.charAt(0)?.toUpperCase() || "S"}
                   </div>
                 </button>
@@ -292,8 +292,8 @@ export default function Navbar() {
                 className="bg-blue-900 text-white p-2 rounded-lg relative"
               >
                 <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5 z-10">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
                 </span>
                 {isOpen ? <HiX size={20} /> : <HiMenu size={20} />}
               </button>
@@ -304,7 +304,7 @@ export default function Navbar() {
 
         {/* Mobile Nav Top Menu */}
         {isOpen && (
-          <div className="lg:hidden bg-white border-t">
+          <div className="lg:hidden bg-white border-t border-slate-200">
             <div className="flex flex-col p-4 gap-3 font-semibold">
               {[
                 { href: "/", label: "Home" },
@@ -321,14 +321,14 @@ export default function Navbar() {
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                     className={`flex items-center justify-between py-1 px-2 rounded-md ${
-                      isActive ? "text-blue-900 bg-blue-50/60 font-bold border-l-4 border-blue-900 pl-2" : "text-slate-600"
+                      isActive ? "text-blue-900 bg-slate-100 font-bold border-l-4 border-blue-900 pl-2" : "text-slate-600"
                     }`}
                   >
                     <span className="flex items-center gap-2">
                       {item.label}
                       {item.hasNotificationDot && (
                         <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
                           <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                         </span>
                       )}
@@ -341,7 +341,7 @@ export default function Navbar() {
                 <Link
                   href="/login"
                   onClick={() => setIsOpen(false)}
-                  className="bg-gradient-to-r from-blue-900 to-indigo-700 text-white text-center py-2 rounded-xl font-semibold mt-1"
+                  className="bg-gradient-to-r from-blue-900 to-blue-700 text-white text-center py-2 rounded-xl font-semibold mt-1"
                 >
                   Login
                 </Link>
@@ -354,54 +354,54 @@ export default function Navbar() {
       {/* Sidebar Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[90] transition-opacity"
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[90] transition-opacity"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Premium Right Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-[100dvh] w-80 bg-gradient-to-b from-blue-950 via-slate-900 to-blue-950 text-white shadow-[-10px_0_30px_rgba(0,0,0,0.5)] z-[100] transform transition-transform duration-300 ease-out border-l border-amber-500/20 flex flex-col justify-between overflow-hidden no-scrollbar ${
+        className={`fixed top-0 right-0 h-[100dvh] w-80 bg-gradient-to-b from-slate-900 via-slate-800 to-blue-900 text-white shadow-[-10px_0_30px_rgba(15,23,42,0.5)] z-[100] transform transition-transform duration-300 ease-out border-l border-slate-700 flex flex-col justify-between overflow-hidden no-scrollbar ${
           sidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Sidebar Header */}
         <div className="flex flex-col">
-          <div className="relative p-4 bg-gradient-to-r from-blue-900/50 to-indigo-900/50 border-b border-amber-500/20 flex justify-between items-center overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-24 h-24 bg-amber-500/10 rounded-full blur-xl" />
+          <div className="relative p-4 bg-gradient-to-r from-blue-900/50 to-slate-800/50 border-b border-slate-700 flex justify-between items-center overflow-hidden">
+            <div className="absolute -top-10 -right-10 w-24 h-24 bg-blue-600/10 rounded-full blur-xl" />
             <div className="z-10">
-              <div className="flex items-center gap-1.5 text-[10px] font-bold text-amber-400 uppercase tracking-widest mb-0.5">
+              <div className="flex items-center gap-1.5 text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-0.5">
                 <Sparkles size={10} className="animate-pulse" /> Welcome, {user ? getFirstName(user?.name) : "Student"}
               </div>
-              <h2 className="font-extrabold text-xl bg-gradient-to-r from-white via-amber-200 to-amber-400 bg-clip-text text-transparent">
+              <h2 className="font-extrabold text-xl bg-gradient-to-r from-white via-slate-100 to-blue-600 bg-clip-text text-transparent">
                 Viraam Vaani
               </h2>
             </div>
             <button 
               onClick={() => setSidebarOpen(false)}
-              className="z-10 p-1.5 rounded-full bg-white/10 text-amber-400 hover:bg-amber-500 hover:text-slate-950 transition-all duration-200 shadow-inner"
+              className="z-10 p-1.5 rounded-full bg-white/10 text-white hover:bg-blue-600 transition-all duration-200 shadow-inner"
             >
               <HiX size={18} />
             </button>
           </div>
 
           {/* Profile Card */}
-          <div className="p-4 text-center border-b border-amber-500/10 bg-gradient-to-b from-white/[0.02] to-transparent">
+          <div className="p-4 text-center border-b border-slate-700 bg-gradient-to-b from-white/[0.02] to-transparent">
             <div className="relative w-16 h-16 mx-auto group">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-300 to-amber-600 animate-spin-slow opacity-70 p-[2px] shadow-[0_0_12px_rgba(245,158,11,0.3)]">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-600 via-blue-700 to-blue-900 animate-spin-slow opacity-70 p-[2px] shadow-[0_0_12px_rgba(37,99,235,0.3)]">
                 <div className="w-full h-full bg-slate-900 rounded-full" />
               </div>
-              <div className="absolute inset-[3px] rounded-full bg-gradient-to-br from-blue-900 to-indigo-900 text-white flex items-center justify-center text-2xl font-black border border-amber-400/30 shadow-inner">
+              <div className="absolute inset-[3px] rounded-full bg-gradient-to-br from-blue-900 to-slate-800 text-white flex items-center justify-center text-2xl font-black border border-slate-300/30 shadow-inner">
                 {user?.name?.charAt(0)?.toUpperCase() || "A"}
               </div>
-              <span className="absolute bottom-0 right-0 bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 text-[8px] font-black px-1.5 py-0.5 rounded-full border border-slate-950 shadow-sm">
+              <span className="absolute bottom-0 right-0 bg-gradient-to-r from-blue-700 to-slate-900 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full border border-slate-900 shadow-sm">
                 {user?.className || "8th"}
               </span>
             </div>
             <h3 className="mt-2.5 font-bold text-base tracking-wide bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent capitalize">
               {user?.name || "Amjad Ansari"}
             </h3>
-            <p className="text-[9px] text-amber-400/70 font-semibold tracking-wider mt-0.5 uppercase">
+            <p className="text-[9px] text-slate-400 font-semibold tracking-wider mt-0.5 uppercase">
               Active Account
             </p>
           </div>
@@ -412,7 +412,7 @@ export default function Navbar() {
           {[
             { href: "/dashboard/profile", label: "Profile", icon: User },
             { href: "/fee", label: "Fees Page", icon: CreditCard }, 
-            { href: "/admit-card", label: "Admit Card", icon: IdCard }, // 👈 Yahan Admit Card add kar diya hai
+            { href: "/admit-card", label: "Admit Card", icon: IdCard },
             {
               href: user?.rollNumber
                 ? `/dashboard/results?roll=${user.rollNumber}`
@@ -431,17 +431,17 @@ export default function Navbar() {
                 onClick={() => setSidebarOpen(false)}
                 className={`flex items-center justify-between p-3.5 rounded-xl border transition-all duration-300 group min-h-[56px] ${
                   isSidebarItemActive
-                    ? "bg-amber-500/10 border-amber-500/40 text-amber-400 font-bold"
-                    : "border-white/[0.03] bg-white/[0.02] text-slate-300 hover:bg-gradient-to-r hover:from-amber-500/10 hover:to-transparent hover:border-amber-500/30 hover:text-amber-400"
+                    ? "bg-blue-600/10 border-blue-600/40 text-blue-600 font-bold"
+                    : "border-white/[0.03] bg-white/[0.02] text-slate-300 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-transparent hover:border-blue-600/30 hover:text-blue-600"
                 }`}
               >
                 <div className="flex items-center gap-3.5">
                   <div className={`p-2 rounded-xl transition-colors relative ${
-                    isSidebarItemActive ? "bg-amber-500/20 text-amber-400" : "bg-white/[0.04] text-slate-400 group-hover:bg-amber-500/20 group-hover:text-amber-400"
+                    isSidebarItemActive ? "bg-blue-600/20 text-blue-600" : "bg-white/[0.04] text-slate-400 group-hover:bg-blue-600/20 group-hover:text-blue-600"
                   }`}>
                     {item.hasBadge && (
                       <span className="absolute top-1.5 right-1.5 flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                       </span>
                     )}
@@ -450,7 +450,7 @@ export default function Navbar() {
                   <span className="font-semibold tracking-wide text-sm">{item.label}</span>
                 </div>
                 <div className={`w-1.5 h-1.5 rounded-full transition-all ${
-                  isSidebarItemActive ? "bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,1)]" : "bg-transparent group-hover:bg-amber-400 shadow-[0_0_8px_rgba(245,158,11,1)]"
+                  isSidebarItemActive ? "bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)]" : "bg-transparent group-hover:bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)]"
                 }`} />
               </Link>
             );
@@ -458,10 +458,10 @@ export default function Navbar() {
         </div>
 
         {/* Premium Logout Button Section */}
-        <div className="p-4 border-t border-white/[0.05] bg-slate-950/40">
+        <div className="p-4 border-t border-slate-700 bg-slate-900/40">
           <button
             onClick={handleLogout}
-            className="w-full bg-gradient-to-r from-red-600/90 to-red-700 hover:from-red-600 hover:to-red-500 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-bold tracking-wide text-sm transition-all duration-200 active:scale-[0.98] shadow-lg shadow-red-950/30 hover:shadow-red-600/20 group"
+            className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-bold tracking-wide text-sm transition-all duration-200 active:scale-[0.98] shadow-lg shadow-red-900/30 group"
           >
             <LogOut size={16} className="group-hover:-translate-x-0.5 transition-transform" />
             Logout Securely

@@ -54,16 +54,16 @@ export default function AdmissionPopup() {
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fade-in">
       
       {/* Main Poster Container */}
-      <div className="relative w-full max-w-md bg-gradient-to-br from-blue-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-6 shadow-2xl border border-amber-500/30 overflow-hidden transform scale-100 transition-all duration-300">
+      <div className="relative w-full max-w-md bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-6 shadow-2xl border border-blue-600/30 overflow-hidden transform scale-100 transition-all duration-300">
         
         {/* Background Glow effects */}
-        <div className="absolute -top-12 -right-12 w-32 h-32 bg-amber-500/20 rounded-full blur-2xl" />
-        <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl" />
+        <div className="absolute -top-12 -right-12 w-32 h-32 bg-blue-600/20 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-blue-900/20 rounded-full blur-2xl pointer-events-none" />
 
         {/* ❌ CUT / CLOSE BUTTON */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-slate-300 hover:bg-amber-500 hover:text-slate-950 transition-all duration-200 z-10 shadow-md"
+          className="absolute top-4 right-4 p-2 rounded-full bg-white/10 text-slate-300 hover:bg-blue-600 hover:text-white transition-all duration-200 z-10 shadow-md"
         >
           <HiX size={20} />
         </button>
@@ -71,12 +71,12 @@ export default function AdmissionPopup() {
         {/* Poster Content */}
         <div className="text-center mt-4">
           {/* Dynamic Session Badge */}
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-600/30 text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
             <Sparkles size={12} className="animate-pulse" /> Session {currentSession}
           </div>
 
           {/* Heading */}
-          <h2 className="text-2xl lg:text-3xl font-black tracking-tight bg-gradient-to-r from-white via-amber-200 to-amber-400 bg-clip-text text-transparent">
+          <h2 className="text-2xl lg:text-3xl font-black tracking-tight bg-gradient-to-r from-white via-blue-100 to-blue-300 bg-clip-text text-transparent">
             ADMISSIONS OPEN
           </h2>
           
@@ -85,12 +85,12 @@ export default function AdmissionPopup() {
           </p>
 
           {/* Offer Box */}
-          <div className="my-5 p-4 bg-white/[0.03] border border-white/5 rounded-2xl flex items-center gap-3.5 text-left">
-            <div className="p-3 bg-amber-50 rounded-xl text-slate-950 animate-bounce">
+          <div className="my-5 p-4 bg-white/[0.03] border border-white/10 rounded-2xl flex items-center gap-3.5 text-left">
+            <div className="p-3 bg-blue-600 rounded-xl text-white animate-bounce flex-shrink-0">
               <Megaphone size={20} />
             </div>
             <div>
-              <h4 className="font-bold text-sm text-amber-400">Early Bird Offer!</h4>
+              <h4 className="font-bold text-sm text-blue-400">Early Bird Offer!</h4>
               <p className="text-xs text-slate-400">Get a flat 20% discount on registration fees for the first 50 students.</p>
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function AdmissionPopup() {
             <Link
               href="/admission"
               onClick={() => setIsOpen(false)}
-              className="w-full bg-gradient-to-r from-amber-500 to-yellow-400 hover:from-amber-600 hover:to-amber-500 text-slate-950 font-extrabold py-3 rounded-xl transition-all duration-200 text-sm tracking-wide shadow-lg shadow-amber-500/10 active:scale-[0.98]"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-extrabold py-3 rounded-xl transition-all duration-200 text-sm tracking-wide shadow-lg shadow-blue-600/20 active:scale-[0.98]"
             >
               Apply Online Now
             </Link>

@@ -37,7 +37,7 @@ export default function WhatsAppButton() {
 
       {/* Actual Floating Button - Compact size */}
       <a
-        href="https://wa.me/918840379554?text=Hello%20Viraam%20Vaani%20Classes,%20I%20have%20an%20enquiry%20regarding%20admissions."
+        href="https://wa.me/919288024338?text=Hello%20Viraam%20Vaani%20Classes,%20I%20have%20an%20enquiry%20regarding%20admissions."
         target="_blank"
         rel="noopener noreferrer"
         title="Chat on WhatsApp"

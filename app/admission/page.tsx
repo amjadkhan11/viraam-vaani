@@ -100,20 +100,20 @@ export default function AdmissionPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen font-sans selection:bg-amber-500 selection:text-white relative overflow-x-hidden text-slate-800">
+    <div className="bg-white min-h-screen font-sans selection:bg-blue-600 selection:text-white relative overflow-x-hidden text-slate-800">
 
       {/* Premium Light Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-slate-50 to-white py-12 px-5 border-b border-slate-100">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 pointer-events-none" />
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-slate-50 to-white py-12 px-5 border-b border-slate-200">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-40 pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto text-center z-10 space-y-4">
-          <span className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-700 border border-amber-500/20 px-4 py-1 rounded-full font-black text-xs tracking-widest uppercase shadow-sm">
-            <Sparkles size={12} className="text-amber-600 animate-spin" />
+          <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 border border-blue-200 px-4 py-1 rounded-full font-black text-xs tracking-widest uppercase shadow-sm">
+            <Sparkles size={12} className="text-blue-600 animate-spin" />
             Admissions Process {currentSession || "2026-27"}
           </span>
 
           <h1 className="text-3xl md:text-5xl font-black tracking-tight leading-none max-w-4xl mx-auto text-slate-900">
-            Join <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-amber-600 to-blue-800 drop-shadow-sm">Viraam Vaani</span>
+            Join <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-900 via-blue-700 to-blue-600 drop-shadow-sm">Viraam Vaani</span>
           </h1>
 
           <p className="text-xs md:text-sm text-slate-500 font-medium max-w-xl mx-auto leading-relaxed">
@@ -133,7 +133,7 @@ export default function AdmissionPage() {
         <div className="lg:col-span-7 space-y-8">
 
           {/* VV-HAES ACADEMIC LEVELS HUB */}
-          <div className="bg-slate-50/50 border border-slate-100 p-6 rounded-3xl">
+          <div className="bg-slate-50 border border-slate-200 p-6 rounded-3xl">
             <div className="mb-4">
               <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">VV-HAES Architecture</span>
               <h2 className="text-lg md:text-xl font-black text-slate-900 tracking-tight mt-0.5">Holistic Admission System Academic Levels</h2>
@@ -142,11 +142,11 @@ export default function AdmissionPage() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {[
                 { level: "V1", target: "Class 6-7", color: "from-blue-500 to-blue-600" },
-                { level: "V2", target: "Class 8", color: "from-indigo-500 to-indigo-600" },
-                { level: "V3", target: "Class 9", color: "from-amber-500 to-amber-600" },
-                { level: "V4", target: "Class 10", color: "from-emerald-500 to-emerald-600" },
+                { level: "V2", target: "Class 8", color: "from-blue-600 to-blue-700" },
+                { level: "V3", target: "Class 9", color: "from-blue-700 to-blue-800" },
+                { level: "V4", target: "Class 10", color: "from-blue-800 to-blue-900" },
               ].map((item, idx) => (
-                <div key={idx} className="bg-white border border-slate-200 p-3 rounded-xl flex flex-col items-center text-center shadow-sm hover:border-slate-300 transition-all">
+                <div key={idx} className="bg-white border border-slate-200 p-3 rounded-xl flex flex-col items-center text-center shadow-sm hover:border-blue-300 transition-all">
                   <div className={`h-8 w-8 rounded-lg bg-gradient-to-br ${item.color} text-white font-black text-xs flex items-center justify-center shadow-sm mb-1.5`}>
                     {item.level}
                   </div>
@@ -156,9 +156,9 @@ export default function AdmissionPage() {
               ))}
             </div>
 
-            <div className="mt-3 p-2.5 bg-amber-50/50 border border-amber-200/60 rounded-xl flex items-start gap-2">
-              <HelpCircle size={14} className="text-amber-600 mt-0.5 shrink-0" />
-              <p className="text-[10px] font-medium text-amber-900 leading-relaxed">
+            <div className="mt-3 p-2.5 bg-blue-50/60 border border-blue-100 rounded-xl flex items-start gap-2">
+              <HelpCircle size={14} className="text-blue-600 mt-0.5 shrink-0" />
+              <p className="text-[10px] font-medium text-blue-900 leading-relaxed">
                 <strong>महत्वपूर्ण बिंदुः</strong> हर Level में यही 4 Stages होंगे, लेकिन प्रश्न और गतिविधियाँ कक्षा के स्तर के अनुसार कठिन होती जाएँगी।
               </p>
             </div>
@@ -167,16 +167,16 @@ export default function AdmissionPage() {
           {/* 4-STAGE ASSESSMENT SYSTEM */}
           <div className="space-y-4">
             <div>
-              <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Evaluation Matrix</span>
+              <span className="text-[10px] font-black text-blue-600 uppercase tracking-widest">Evaluation Matrix</span>
               <h2 className="text-lg md:text-xl font-black text-slate-900 tracking-tight mt-0.5">Assessment Stages & Breakdown</h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
                 { stage: "Stage 1", title: "Academic & Thinking", marks: "30 Marks", desc: "Checks core cognitive, analytical abilities and subject foundations.", icon: <BookOpen size={14} />, color: "text-blue-600 bg-blue-50 border-blue-200" },
-                { stage: "Stage 2", title: "Character & Personality", marks: "25 Marks", desc: "Evaluates psychological resilience, ethics, and moral perspective.", icon: <User size={14} />, color: "text-indigo-600 bg-indigo-50 border-indigo-200" },
-                { stage: "Stage 3", title: "Activity & Leadership", marks: "20 Marks", desc: "Tests field cooperation, project initiative, and physical reflexes.", icon: <Layers size={14} />, color: "text-amber-600 bg-amber-50 border-amber-200" },
-                { stage: "Stage 4", title: "Personal Interview", marks: "25 Marks", desc: "Final feedback discussion and environmental alignment checklist.", icon: <Users size={14} />, color: "text-emerald-600 bg-emerald-50 border-emerald-200" }
+                { stage: "Stage 2", title: "Character & Personality", marks: "25 Marks", desc: "Evaluates psychological resilience, ethics, and moral perspective.", icon: <User size={14} />, color: "text-blue-900 bg-slate-100 border-slate-200" },
+                { stage: "Stage 3", title: "Activity & Leadership", marks: "20 Marks", desc: "Tests field cooperation, project initiative, and physical reflexes.", icon: <Layers size={14} />, color: "text-blue-600 bg-blue-50 border-blue-200" },
+                { stage: "Stage 4", title: "Personal Interview", marks: "25 Marks", desc: "Final feedback discussion and environmental alignment checklist.", icon: <Users size={14} />, color: "text-blue-900 bg-slate-100 border-slate-200" }
               ].map((stg, i) => (
                 <div key={i} className="bg-white border border-slate-200 p-3 rounded-xl flex gap-3.5 shadow-sm hover:shadow-md transition-shadow">
                   <div className={`h-8 w-8 rounded-lg shrink-0 flex items-center justify-center border ${stg.color}`}>
@@ -203,10 +203,10 @@ export default function AdmissionPage() {
               </h3>
               <div className="divide-y divide-slate-100 text-[11px]">
                 {[
-                  { range: "90-100", label: "Viraam Scholar", badge: "bg-purple-100 text-purple-700" },
-                  { range: "75-89", label: "Gold Selection", badge: "bg-amber-100 text-amber-700" },
+                  { range: "90-100", label: "Viraam Scholar", badge: "bg-blue-900 text-white" },
+                  { range: "75-89", label: "Gold Selection", badge: "bg-blue-100 text-blue-700" },
                   { range: "60-74", label: "Silver Selection", badge: "bg-slate-100 text-slate-700" },
-                  { range: "Below 60", label: "Foundation/Bridge", badge: "bg-blue-100 text-blue-700" },
+                  { range: "Below 60", label: "Foundation/Bridge", badge: "bg-blue-50 text-blue-600" },
                 ].map((row, rIdx) => (
                   <div key={rIdx} className="py-2 flex items-center justify-between font-medium">
                     <span className="text-slate-500 font-mono text-[10px]">{row.range}</span>
@@ -227,7 +227,7 @@ export default function AdmissionPage() {
                     <span className="text-[10px] font-medium text-slate-700">Student's Class Level</span>
                   </div>
                   <div className="bg-white border border-slate-200 rounded-lg p-2 flex gap-2 items-center">
-                    <span className="text-[10px] font-black text-indigo-700 bg-indigo-50 border border-indigo-100 px-1.5 py-0.5 rounded text-center">Stage 1-4</span>
+                    <span className="text-[10px] font-black text-blue-900 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded text-center">Stage 1-4</span>
                     <span className="text-[10px] font-medium text-slate-700">Selection Stages</span>
                   </div>
                 </div>
@@ -236,9 +236,9 @@ export default function AdmissionPage() {
           </div>
 
           {/* SYLLABUS PDF HUB */}
-          <div className="bg-gradient-to-r from-slate-50 to-blue-50/30 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div className="bg-gradient-to-r from-blue-50/50 via-white to-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="space-y-0.5">
-              <div className="flex items-center gap-1.5 text-blue-800">
+              <div className="flex items-center gap-1.5 text-blue-900">
                 <BookOpen size={14} className="stroke-[2.5]" />
                 <h4 className="text-[11px] font-black uppercase tracking-wider">Entrance Test Structure</h4>
               </div>
@@ -249,9 +249,9 @@ export default function AdmissionPage() {
             <a
               href="/assets/sample-paper.pdf"
               download="Viraam_Vaani_Entrance_Sample_Paper.pdf"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white border border-slate-300 hover:border-amber-500 hover:text-amber-700 text-slate-700 px-3 py-2 rounded-xl font-bold text-[11px] shadow-sm transition-all duration-200 whitespace-nowrap group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white border border-slate-300 hover:border-blue-600 hover:text-blue-700 text-slate-700 px-3 py-2 rounded-xl font-bold text-[11px] shadow-sm transition-all duration-200 whitespace-nowrap group"
             >
-              <Download size={12} className="text-slate-500 group-hover:text-amber-600 transition-colors" />
+              <Download size={12} className="text-slate-500 group-hover:text-blue-600 transition-colors" />
               Sample Paper
             </a>
           </div>
@@ -265,7 +265,7 @@ export default function AdmissionPage() {
           <div className="bg-white border border-slate-200 rounded-3xl shadow-[0_10px_30px_rgba(0,0,0,0.02)] p-6 relative overflow-hidden">
 
             {/* Top Accent Line */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-amber-400 to-blue-600" />
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900" />
 
             <div className="text-center space-y-1 mb-5">
               <h2 className="text-lg md:text-xl font-black tracking-tight text-slate-900">
@@ -298,7 +298,7 @@ export default function AdmissionPage() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Ex: Amjad Ansari"
-                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 text-xs text-slate-800 font-medium transition-all"
+                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 text-xs text-slate-800 font-medium transition-all"
                   />
                 </div>
               </div>
@@ -317,7 +317,7 @@ export default function AdmissionPage() {
                     value={formData.fatherName}
                     onChange={handleChange}
                     placeholder="Enter father's name"
-                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 text-xs text-slate-800 font-medium transition-all"
+                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 text-xs text-slate-800 font-medium transition-all"
                   />
                 </div>
               </div>
@@ -336,7 +336,7 @@ export default function AdmissionPage() {
                     value={formData.mobile}
                     onChange={handleChange}
                     placeholder="Enter mobile number"
-                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 text-xs text-slate-800 font-medium transition-all"
+                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 text-xs text-slate-800 font-medium transition-all"
                   />
                 </div>
               </div>
@@ -355,7 +355,7 @@ export default function AdmissionPage() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Enter email address"
-                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 text-xs text-slate-800 font-medium transition-all"
+                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 text-xs text-slate-800 font-medium transition-all"
                   />
                 </div>
               </div>
@@ -372,7 +372,7 @@ export default function AdmissionPage() {
                     required
                     value={formData.className}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-10 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 text-xs text-slate-800 font-medium transition-all appearance-none cursor-pointer"
+                    className="w-full pl-10 pr-10 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 text-xs text-slate-800 font-medium transition-all appearance-none cursor-pointer"
                   >
                     <option value="">Choose Class</option>
                     <option value="1st">Class 1</option>
@@ -380,9 +380,6 @@ export default function AdmissionPage() {
                     <option value="3rd">Class 3</option>
                     <option value="4th">Class 4</option>
                     <option value="5th">Class 5 </option>
-
-
-
                     <option value="6th">Class 6 </option>
                     <option value="7th">Class 7</option>
                     <option value="8th">Class 8 </option>
@@ -411,7 +408,7 @@ export default function AdmissionPage() {
                     value={formData.schoolName}
                     onChange={handleChange}
                     placeholder="Enter school name"
-                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 text-xs text-slate-800 font-medium transition-all"
+                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 text-xs text-slate-800 font-medium transition-all"
                   />
                 </div>
               </div>
@@ -430,7 +427,7 @@ export default function AdmissionPage() {
                     value={formData.address}
                     onChange={handleChange}
                     placeholder="Enter full postal address"
-                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 text-xs text-slate-800 font-medium transition-all resize-none"
+                    className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 text-xs text-slate-800 font-medium transition-all resize-none"
                   />
                 </div>
               </div>
@@ -439,7 +436,7 @@ export default function AdmissionPage() {
               <div className="pt-1">
                 <button
                   type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-800 hover:from-blue-800 hover:to-blue-900 text-white py-2.5 rounded-xl font-black text-xs uppercase tracking-widest shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-blue-900 hover:bg-blue-800 text-white py-2.5 rounded-xl font-black text-xs uppercase tracking-widest shadow-md hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
                 >
                   <span>Submit Form</span>
                   <Send size={12} className="stroke-[2.5]" />
@@ -449,14 +446,14 @@ export default function AdmissionPage() {
             </form>
           </div>
 
-          {/* NEW ELEGANT INSPIRATIONAL QUOTE BOX: Fills bottom space beautifully */}
-          <div className="bg-gradient-to-br from-slate-900 to-blue-950 text-slate-100 rounded-3xl p-5 shadow-xl relative overflow-hidden border border-slate-800">
+          {/* INSPIRATIONAL QUOTE BOX */}
+          <div className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-slate-100 rounded-3xl p-5 shadow-xl relative overflow-hidden border border-slate-800">
             <div className="absolute -right-6 -bottom-6 text-slate-800/20 opacity-30 pointer-events-none">
               <Quote size={120} />
             </div>
 
             <div className="relative space-y-2.5">
-              <div className="inline-flex items-center gap-1.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider">
+              <div className="inline-flex items-center gap-1.5 bg-blue-600/20 text-blue-300 border border-blue-500/30 px-2.5 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider">
                 Our Vision
               </div>
 
@@ -481,12 +478,12 @@ export default function AdmissionPage() {
 
       {/* SUCCESS MODAL POPUP LAYER */}
       {showSuccessPopup && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-md flex items-center justify-center p-4 z-[999]">
+        <div className="fixed inset-0 bg-slate-950/60 backdrop-blur-md flex items-center justify-center p-4 z-[999]">
           <div className="bg-white rounded-[32px] border border-slate-200 max-w-sm w-full p-6 text-center shadow-2xl relative overflow-hidden transition-transform duration-300">
-            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 via-amber-500 to-blue-700" />
+            <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-900 via-blue-600 to-blue-900" />
 
             <div className="relative mx-auto w-16 h-16 bg-blue-50 border-4 border-slate-50 shadow-md rounded-full flex items-center justify-center mb-4">
-              <PartyPopper size={30} className="text-amber-500 absolute -top-1 -right-1 rotate-12 animate-bounce" />
+              <PartyPopper size={30} className="text-blue-600 absolute -top-1 -right-1 rotate-12 animate-bounce" />
               <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center shadow-sm">
                 <Check size={20} className="text-white font-black stroke-[3.5]" />
               </div>

@@ -3,12 +3,23 @@
 import { useState } from "react";
 import { 
   ArrowLeft, LayoutGrid, Image as ImageIcon, 
-  Video, Calendar, Award, Sparkles, ArrowUpRight, Palette 
+  Calendar, Award, Sparkles, ArrowUpRight, Palette 
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
+
+interface GalleryItem {
+  id: number;
+  type: string;
+  category: "campus" | "creativity" | "events" | "achievers";
+  title: string;
+  desc: string;
+  date: string;
+  image: string;
+}
 
 export default function MediaGalleryPage() {
-  const [activeFilter, setActiveFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState<string>("all");
   const [imageErrors, setImageErrors] = useState<{ [key: number]: boolean }>({});
 
   const categories = [
@@ -19,7 +30,7 @@ export default function MediaGalleryPage() {
     { id: "achievers", label: "Celebrations" },
   ];
 
-  const galleryItems = [
+  const galleryItems: GalleryItem[] = [
     // ======= CAMPUS LIFE =======
     {
       id: 1,
@@ -29,7 +40,6 @@ export default function MediaGalleryPage() {
       desc: "Special outdoor classes where teachers occasionally take students under the sacred Banyan tree for a peaceful, high-focus learning session.",
       date: "June 2026",
       image: "/images/campus1.jpeg",
-      videoUrl: "",
     },
     {
       id: 2,
@@ -39,7 +49,6 @@ export default function MediaGalleryPage() {
       desc: "Teachers periodically organize open-air group discussions here, encouraging collaborative peer learning in the lap of nature.",
       date: "June 2026",
       image: "/images/campus.jpeg",
-      videoUrl: "",
     },
     {
       id: 3,
@@ -49,7 +58,6 @@ export default function MediaGalleryPage() {
       desc: "Our brilliant batch standing together after a successful learning cycle.",
       date: "May 2026",
       image: "/images/campus3.jpeg",
-      
     },
 
     // ======= CREATIVITY ZONE =======
@@ -61,7 +69,6 @@ export default function MediaGalleryPage() {
       desc: "Beautifully handcrafted geographical three-dimensional models created by students.",
       date: "June 2026",
       image: "/images/creativity.jpeg",
-    
     },
     {
       id: 5,
@@ -71,7 +78,6 @@ export default function MediaGalleryPage() {
       desc: "Functional school models explaining intricate anatomical organs flawlessly.",
       date: "May 2026",
       image: "/images/creativity2.jpeg",
-     
     },
     {
       id: 6,
@@ -81,7 +87,6 @@ export default function MediaGalleryPage() {
       desc: "Visual art projects displaying deep creative thinking and innovative crafting skills.",
       date: "April 2026",
       image: "/images/creatvity3.jpeg",
-      
     },
 
     // ======= EXHIBITIONS & EVENTS =======
@@ -93,7 +98,6 @@ export default function MediaGalleryPage() {
       desc: "Interactive educational events boosting student confidence and stage presence.",
       date: "June 2026",
       image: "/images/event.jpeg",
-      
     },
     {
       id: 8,
@@ -103,7 +107,6 @@ export default function MediaGalleryPage() {
       desc: "Memorable moments from our field trip and real-world exposure exhibitions.",
       date: "May 2026",
       image: "/images/e4.jpeg",
-      
     },
     {
       id: 9,
@@ -113,7 +116,6 @@ export default function MediaGalleryPage() {
       desc: "Students presenting complex analytical arguments on stage flawlessly.",
       date: "May 2026",
       image: "/images/e3.jpeg",
-     
     },
 
     // ======= CELEBRATIONS (ACHIEVERS) =======
@@ -125,7 +127,6 @@ export default function MediaGalleryPage() {
       desc: "Celebrating our bright students holding their certificates and medals proudly, awarded for their outstanding performance and exceptional dedication throughout the session.",
       date: "April 2026",
       image: "/images/campus3.jpeg",
-     
     },
     {
       id: 11,
@@ -135,7 +136,6 @@ export default function MediaGalleryPage() {
       desc: "A glimpse of our wonderful students coming together to celebrate Children's Day with bright smiles, cake cutting, and fun collaborative classroom activities.",
       date: "April 2026",
       image: "/images/Celebrations.jpeg",
-      
     },
     {
       id: 12,
@@ -145,7 +145,6 @@ export default function MediaGalleryPage() {
       desc: "Our dedicated scholars gathering on the final result day, receiving their performance sheets and tokens of appreciation for their consistent focus and sincere efforts.",
       date: "April 2026",
       image: "/images/e5.jpeg",
-     
     },
   ];
 
@@ -155,24 +154,24 @@ export default function MediaGalleryPage() {
 
   const filteredItems = activeFilter === "all" 
     ? galleryItems 
-    : galleryItems.filter(item => item.category === activeFilter);
+    : galleryItems.filter((item) => item.category === activeFilter);
 
   return (
     <section className="relative bg-gradient-to-b from-slate-50 via-white to-slate-50 text-slate-900 overflow-hidden font-sans py-12 lg:py-16">
       
       {/* Background Micro-Glow layers */}
       <div className="absolute top-0 left-1/4 h-[400px] w-[400px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-12 right-1/4 h-[400px] w-[400px] bg-amber-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-12 right-1/4 h-[400px] w-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-6 space-y-10">
         
         {/* TOP BREADCRUMB */}
         <div className="flex items-center justify-between">
-          <Link href="/about" className="inline-flex items-center gap-2 text-xs font-bold text-blue-900 hover:text-amber-600 transition-colors group">
+          <Link href="/about" className="inline-flex items-center gap-2 text-xs font-bold text-blue-900 hover:text-blue-700 transition-colors group">
             <ArrowLeft size={14} className="transform group-hover:-translate-x-0.5 transition-transform" />
             Back to About
           </Link>
-          <span className="text-[10px] font-black text-amber-600 uppercase tracking-widest bg-amber-50 px-3 py-1 rounded-full border border-amber-500/20 shadow-sm">
+          <span className="text-[10px] font-black text-blue-900 uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-200 shadow-sm">
             🎯 Knowledge Hub
           </span>
         </div>
@@ -181,7 +180,7 @@ export default function MediaGalleryPage() {
         <div className="max-w-3xl space-y-3">
           <h1 className="text-3xl md:text-5xl font-black tracking-tight text-slate-950">
             Our Digital{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 via-amber-600 to-amber-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-950 via-blue-900 to-slate-900">
               Media Gallery
             </span>
           </h1>
@@ -198,7 +197,7 @@ export default function MediaGalleryPage() {
               onClick={() => setActiveFilter(cat.id)}
               className={`px-4 py-2 rounded-xl text-xs font-bold tracking-tight transition-all duration-200 ${
                 activeFilter === cat.id
-                  ? "bg-gradient-to-r from-blue-950 to-blue-900 text-white shadow-md shadow-blue-950/10 scale-[1.02]"
+                  ? "bg-gradient-to-r from-blue-950 via-slate-950 to-blue-900 text-white shadow-md shadow-blue-950/10 scale-[1.02]"
                   : "bg-white text-slate-600 border border-slate-200 hover:border-blue-900/40 hover:text-blue-900"
               }`}
             >
@@ -212,33 +211,34 @@ export default function MediaGalleryPage() {
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-2xl bg-white border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:border-amber-500/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="group relative overflow-hidden rounded-2xl bg-white border border-slate-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:border-blue-600/50 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               {/* Media Block Frame */}
               <div className="relative w-full aspect-[4/3] bg-slate-50 flex items-center justify-center overflow-hidden border-b border-slate-100">
                 
                 {imageErrors[item.id] ? (
-                  /* Soft UI Clean placeholder fallback state (No random internet photo) */
+                  /* Soft UI Clean placeholder fallback state */
                   <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200 flex flex-col justify-center items-center text-center p-4 space-y-1">
                     <ImageIcon className="text-slate-400 animate-pulse" size={24} />
                     <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">Image Loading...</p>
                   </div>
                 ) : (
-                  <img 
+                  <Image 
                     src={item.image} 
                     alt={item.title} 
-                    /* object-cover is optimized with standard fallback handling */
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     onError={() => handleImageError(item.id)}
                   />
                 )}
 
                 {/* Dynamic Category Badges */}
                 <span className="absolute top-3 left-3 inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-sm border border-slate-200 text-[10px] font-black uppercase text-slate-800 shadow-sm z-20">
-                  {item.category === "events" && <Sparkles size={10} className="text-amber-600" />}
+                  {item.category === "events" && <Sparkles size={10} className="text-blue-700" />}
                   {item.category === "campus" && <LayoutGrid size={10} className="text-blue-900" />}
                   {item.category === "creativity" && <Palette size={10} className="text-emerald-600" />}
-                  {item.category === "achievers" && <Award size={10} className="text-amber-600" />}
+                  {item.category === "achievers" && <Award size={10} className="text-blue-700" />}
                   {item.category === "achievers" ? "Celebration" : item.category === "events" ? "Events" : item.category === "campus" ? "Campus Life" : "Creativity"}
                 </span>
               </div>
@@ -251,7 +251,7 @@ export default function MediaGalleryPage() {
                       <Calendar size={10} />
                       {item.date}
                     </span>
-                    <ArrowUpRight size={14} className="text-slate-300 group-hover:text-amber-600 transition-colors duration-200" />
+                    <ArrowUpRight size={14} className="text-slate-300 group-hover:text-blue-800 transition-colors duration-200" />
                   </div>
                   <h3 className="text-base font-black text-slate-950 tracking-tight group-hover:text-blue-900 transition-colors">
                     {item.title}

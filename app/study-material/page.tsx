@@ -96,15 +96,15 @@ export default function StudyMaterialPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 font-sans">
       {/* Mini Hero Section */}
-      <section className="bg-gradient-to-r from-blue-950 to-indigo-900 text-white py-8 shadow-sm">
+      <section className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 text-white py-8 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div>
-            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">Study</h1>
+            <h1 className="text-2xl md:text-3xl font-extrabold tracking-tight">Study Material</h1>
             <p className="text-blue-200 text-xs md:text-sm mt-1">Access notes, assignments, and practice papers seamlessly.</p>
           </div>
-          <div className="bg-blue-900/40 border border-blue-700/50 rounded-xl px-4 py-2 text-xs md:text-sm inline-flex items-center gap-2 self-start md:self-auto">
+          <div className="bg-blue-900/50 border border-blue-700/50 rounded-xl px-4 py-2 text-xs md:text-sm inline-flex items-center gap-2 self-start md:self-auto backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             Total {materials.length} Resources Active
           </div>
@@ -125,7 +125,7 @@ export default function StudyMaterialPage() {
               onClick={() => setSelectedClass("All")}
               className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
                 selectedClass === "All"
-                  ? "bg-blue-900 text-white shadow-sm"
+                  ? "bg-blue-950 text-white shadow-sm"
                   : "bg-slate-100 text-slate-600 hover:bg-slate-200"
               }`}
             >
@@ -144,17 +144,17 @@ export default function StudyMaterialPage() {
                   onClick={() => setSelectedClass(cls)}
                   className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
                     selectedClass === cls
-                      ? "bg-blue-900 text-white shadow-sm font-bold"
+                      ? "bg-blue-950 text-white shadow-sm font-bold"
                       : hasMaterial
-                      ? "bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100"
+                      ? "bg-blue-50 text-blue-900 border border-blue-200 hover:bg-blue-100"
                       : "bg-slate-50 text-slate-400 border border-slate-200/60 opacity-65 hover:opacity-100"
                   }`}
                 >
                   <span>{cls}</span>
                   {hasMaterial && (
-                    <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${selectedClass === cls ? "bg-blue-800 text-white" : "bg-emerald-600 text-white"}`}>
-                      {count
-                    }</span>
+                    <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${selectedClass === cls ? "bg-blue-800 text-white" : "bg-blue-900 text-white"}`}>
+                      {count}
+                    </span>
                   )}
                 </button>
               );
@@ -167,7 +167,7 @@ export default function StudyMaterialPage() {
       <main className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex items-center gap-2 mb-6">
           <BookOpen className="text-blue-900" size={20} />
-          <h2 className="text-xl font-bold text-slate-900">
+          <h2 className="text-xl font-bold text-slate-950">
             {selectedClass === "All" ? "Latest Material" : `${selectedClass} Resources`}
           </h2>
         </div>
@@ -176,7 +176,7 @@ export default function StudyMaterialPage() {
           <div className="bg-white rounded-2xl p-8 text-center border border-dashed border-slate-200 max-w-md mx-auto mt-4">
             <h3 className="font-semibold text-slate-700 text-base">No content here yet</h3>
             <p className="text-slate-400 mt-1 text-xs">
-              📚 Documents for this class haven't been uploaded. Try choosing a class with a green tag!
+              📚 Documents for this class haven&apos;t been uploaded. Try choosing a class with an active tag!
             </p>
           </div>
         ) : (
@@ -184,20 +184,21 @@ export default function StudyMaterialPage() {
             {filteredMaterials.map((pdf, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-blue-900/30 hover:shadow-md transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold uppercase tracking-wider">
+                    {/* Subject Tag - Clean Royal Blue Badge */}
+                    <span className="text-[10px] bg-blue-50 text-blue-900 border border-blue-200/80 px-2.5 py-0.5 rounded-md font-extrabold uppercase tracking-wider">
                       {pdf.subject}
                     </span>
-                    <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded text-[10px] font-semibold">
+                    <span className="bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md text-[10px] font-semibold">
                       {pdf.className}
                     </span>
                   </div>
 
                   <div className="mt-3">
-                    <h3 className="text-base font-bold text-slate-900 line-clamp-1 flex items-center gap-2">
+                    <h3 className="text-base font-bold text-slate-950 line-clamp-1 flex items-center gap-2">
                       <FileText size={16} className="text-blue-900 flex-shrink-0" />
                       {pdf.title}
                     </h3>
@@ -209,7 +210,7 @@ export default function StudyMaterialPage() {
 
                 <button
                   onClick={() => handleDownload(pdf.pdfUrl, pdf.title)}
-                  className="mt-4 w-full bg-slate-900 hover:bg-blue-900 text-white py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer"
+                  className="mt-4 w-full bg-slate-950 hover:bg-blue-900 text-white py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer shadow-sm"
                 >
                   <Download size={14} />
                   Download PDF
