@@ -134,9 +134,9 @@ export default function StudentFeeDashboard() {
 
   if (loading && fees.length === 0) {
     return (
-      <div className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4">
-        <div className="w-10 h-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin mb-3"></div>
-        <p className="font-bold text-slate-900 uppercase tracking-wider text-xs">Loading...</p>
+      <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 flex flex-col items-center justify-center p-4">
+        <div className="w-10 h-10 border-4 border-blue-700 border-t-transparent rounded-full animate-spin mb-3"></div>
+        <p className="font-bold text-slate-700 uppercase tracking-wider text-xs">Loading records...</p>
       </div>
     );
   }
@@ -153,11 +153,11 @@ export default function StudentFeeDashboard() {
           border-radius: 10px;
         }
         .cards-scroll-box::-webkit-scrollbar-thumb {
-          background: #d97706;
+          background: #1d4ed8;
           border-radius: 10px;
         }
         .cards-scroll-box::-webkit-scrollbar-thumb:hover {
-          background: #b45309;
+          background: #1e40af;
         }
 
         @media print {
@@ -195,90 +195,112 @@ export default function StudentFeeDashboard() {
         }
       `}</style>
 
-      {/* Main Container */}
-      <div className="print:hidden min-h-screen bg-slate-100 p-4 md:p-6 font-sans max-w-5xl mx-auto space-y-5">
+      {/* Main Container - Fresh Blue & Slate White Background */}
+      <div className="print:hidden min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 p-4 md:p-8 font-sans relative overflow-hidden">
         
-        {/* Profile Card */}
-        {student && (
-          <div className="rounded-2xl bg-slate-900 p-5 text-white shadow-md border border-slate-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="space-y-1 z-10">
-              <span className="bg-amber-500/20 text-amber-400 text-[10px] font-black uppercase tracking-widest px-3 py-0.5 rounded-full border border-amber-500/30 inline-block mb-1">
-                Viraam Vaani Payment Portal
-              </span>
-              <h1 className="text-xl font-black tracking-tight capitalize text-white">{student.name}</h1>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-300 font-medium">
-                <span className="bg-slate-800 px-2.5 py-0.5 rounded-md text-amber-300 font-bold border border-slate-700">
-                  Class: {student.className || "N/A"}
-                </span>
-                <span>📞 {student.phone}</span>
-                <span>📧 {student.email}</span>
-              </div>
-            </div>
+        {/* Light Mesh Accent Blurs (Hero Theme) */}
+        <div className="absolute top-20 left-20 h-80 w-80 rounded-full bg-blue-300/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-20 right-20 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
 
-            <div className="z-10 bg-slate-800 border border-slate-700 px-4 py-2.5 rounded-xl text-right shrink-0">
-              <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">Total Ledgers</span>
-              <span className="text-lg font-black text-amber-400">{fees.length} Records</span>
-            </div>
-          </div>
-        )}
+        <div className="max-w-6xl mx-auto relative z-10 space-y-8">
+          
+          {/* HERO BRANDING PROFILE BANNER CARD */}
+          {student && (
+            <div className="relative bg-gradient-to-r from-blue-700 to-blue-500 rounded-3xl p-6 md:p-8 text-white shadow-xl overflow-hidden">
+              
+              {/* Internal Decorative Accents */}
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
 
-        {/* Dashboard Fee Cards Container */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-sm space-y-3">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <h2 className="text-sm font-black text-slate-900 flex items-center gap-2 tracking-wider uppercase">
-              <Calendar size={16} className="text-amber-500" /> Academic Fee Dashboard
-            </h2>
-            <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wider">Scroll to view all</span>
-          </div>
-
-          <div className="max-h-[350px] md:max-h-[380px] overflow-y-auto pr-2 cards-scroll-box">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-              {fees.map((fee) => (
-                <div 
-                  key={fee.id}
-                  onClick={() => {
-                    setSelectedFee(fee);
-                    setIsModalOpen(true);
-                  }}
-                  className="group bg-slate-50/50 border border-slate-200 hover:border-amber-500 rounded-xl p-4 cursor-pointer transition-all duration-200 hover:shadow-sm flex flex-col justify-between gap-3"
-                >
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">{fee.month} {fee.year}</p>
-                      <p className="text-xl font-black text-slate-900 mt-0.5">₹{fee.amount}</p>
-                    </div>
-                    <span className={`px-2.5 py-0.5 rounded text-[9px] font-black tracking-wider uppercase ${
-                      fee.status === "PAID" ? "bg-emerald-50 text-emerald-700 border border-emerald-200" :
-                      fee.status === "PENDING" ? "bg-amber-50 text-amber-700 border border-amber-200" :
-                      fee.status === "REJECTED" ? "bg-rose-50 text-rose-700 border border-rose-200" :
-                      "bg-slate-100 text-slate-700 border border-slate-200"
-                    }`}>
-                      {fee.status}
+              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left">
+                <div className="space-y-2 flex-1">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 text-white text-[10px] font-black uppercase tracking-wider backdrop-blur-md">
+                    💳 Viraam Vaani Payment Portal
+                  </span>
+                  <h1 className="text-2xl md:text-4xl font-black tracking-tight text-white capitalize">
+                    {student.name}
+                  </h1>
+                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-1">
+                    <span className="text-xs md:text-sm font-semibold text-white bg-white/15 border border-white/20 px-3.5 py-1 rounded-full backdrop-blur-md">
+                      📚 Class: <span className="font-bold text-white">{student.className || "N/A"}</span>
                     </span>
-                  </div>
-
-                  <div className="flex items-center justify-between text-[11px] font-bold pt-2 border-t border-slate-100">
-                    <span className="text-slate-500 group-hover:text-slate-900 transition-colors">
-                      {fee.status === "PAID" 
-                        ? "View Receipt" 
-                        : fee.status === "REJECTED" 
-                        ? "Re-submit Payment" 
-                        : "Receipt & Pay"
-                      }
+                    <span className="text-xs md:text-sm font-semibold text-white bg-white/15 border border-white/20 px-3.5 py-1 rounded-full backdrop-blur-md">
+                      📞 {student.phone}
                     </span>
-
-                    {fee.status === "REJECTED" ? (
-                      <span className="bg-rose-600 hover:bg-rose-700 text-white text-[10px] font-black px-2.5 py-1 rounded tracking-wider uppercase transition-all">
-                        PAY AGAIN
-                      </span>
-                    ) : (
-                      <span className="text-amber-600 group-hover:translate-x-0.5 transition-transform">
-                        →
-                      </span>
-                    )}
+                    <span className="text-xs md:text-sm font-semibold text-white bg-white/15 border border-white/20 px-3.5 py-1 rounded-full backdrop-blur-md">
+                      📧 {student.email}
+                    </span>
                   </div>
                 </div>
-              ))}
+
+                <div className="z-10 bg-white/15 border border-white/25 px-5 py-3 rounded-2xl text-center md:text-right shrink-0 backdrop-blur-md">
+                  <span className="text-[10px] text-blue-100 font-bold uppercase tracking-wider block">Total Ledgers</span>
+                  <span className="text-xl md:text-2xl font-black text-white">{fees.length} Records</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Dashboard Fee Cards Container */}
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] relative overflow-hidden group">
+            <div className="absolute left-0 top-0 bottom-0 w-[4px] bg-gradient-to-b from-blue-700 via-blue-600 to-slate-700 rounded-l-2xl" />
+
+            <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4 pl-2">
+              <h2 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-blue-50 text-blue-700"><Calendar size={18} /></span>
+                Academic Fee Dashboard
+              </h2>
+              <span className="text-[11px] text-slate-400 font-bold uppercase tracking-wide">Scroll to view all</span>
+            </div>
+
+            <div className="max-h-[380px] md:max-h-[420px] overflow-y-auto pr-2 cards-scroll-box pl-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {fees.map((fee) => (
+                  <div 
+                    key={fee.id}
+                    onClick={() => {
+                      setSelectedFee(fee);
+                      setIsModalOpen(true);
+                    }}
+                    className="group bg-slate-50/80 border border-slate-200/80 hover:border-blue-300 rounded-2xl p-5 cursor-pointer transition-all duration-300 hover:shadow-md hover:bg-white flex flex-col justify-between gap-4"
+                  >
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="text-[11px] font-bold text-blue-700 uppercase tracking-wide">{fee.month} {fee.year}</p>
+                        <p className="text-2xl font-black text-slate-900 mt-0.5">₹{fee.amount}</p>
+                      </div>
+                      <span className={`px-3 py-1 rounded-full text-[10px] font-black tracking-wider uppercase border ${
+                        fee.status === "PAID" ? "bg-emerald-50 text-emerald-700 border-emerald-200" :
+                        fee.status === "PENDING" ? "bg-amber-50 text-amber-700 border-amber-200" :
+                        fee.status === "REJECTED" ? "bg-rose-50 text-rose-700 border-rose-200" :
+                        "bg-slate-100 text-slate-700 border-slate-200"
+                      }`}>
+                        {fee.status}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-[11px] font-bold pt-3 border-t border-slate-100">
+                      <span className="text-slate-500 group-hover:text-blue-700 transition-colors">
+                        {fee.status === "PAID" 
+                          ? "View Receipt" 
+                          : fee.status === "REJECTED" 
+                          ? "Re-submit Payment" 
+                          : "Receipt & Pay"
+                        }
+                      </span>
+
+                      {fee.status === "REJECTED" ? (
+                        <span className="bg-rose-600 hover:bg-rose-700 text-white text-[10px] font-black px-3 py-1 rounded-lg tracking-wider uppercase transition-all">
+                          PAY AGAIN
+                        </span>
+                      ) : (
+                        <span className="text-blue-700 group-hover:translate-x-1 transition-transform">
+                          →
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -286,19 +308,20 @@ export default function StudentFeeDashboard() {
 
       {/* Modal View */}
       {isModalOpen && selectedFee && student && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 print:p-0 print:bg-white print:static">
-          <div className="bg-white w-full max-w-lg rounded-2xl p-6 shadow-2xl relative space-y-5 max-h-[90vh] overflow-y-auto cards-scroll-box print:max-h-none print:overflow-visible print:shadow-none print:p-0 print:rounded-none border border-slate-200 print:border-none">
+        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 print:p-0 print:bg-white print:static animate-fade-in">
+          <div className="bg-white w-full max-w-lg rounded-2xl p-6 shadow-2xl relative space-y-5 max-h-[90vh] overflow-y-auto cards-scroll-box print:max-h-none print:overflow-visible print:shadow-none print:p-0 print:rounded-none border border-slate-200/80 print:border-none">
             
             {/* Modal Header */}
             <div className="flex justify-between items-center border-b border-slate-100 pb-3 print:hidden">
-              <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
-                <CreditCard size={16} className="text-amber-500" /> Invoice Statement
+              <h3 className="text-sm font-black text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                <span className="p-1 rounded-lg bg-blue-50 text-blue-700"><CreditCard size={16} /></span>
+                Invoice Statement
               </h3>
               <button 
                 onClick={() => { setIsModalOpen(false); setUtrNumber(""); }}
-                className="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition"
+                className="text-slate-400 hover:text-slate-600 text-xl font-bold bg-transparent border-none outline-none cursor-pointer p-1"
               >
-                <X size={18} />
+                ✕
               </button>
             </div>
 
@@ -307,7 +330,7 @@ export default function StudentFeeDashboard() {
               <div className="space-y-4 print:hidden">
 
                 {selectedFee.status === "REJECTED" && (
-                  <div className="bg-rose-50 border border-rose-200 text-rose-900 p-3.5 rounded-xl text-xs space-y-1">
+                  <div className="bg-rose-50 border border-rose-200 text-rose-900 p-3.5 rounded-2xl text-xs space-y-1">
                     <p className="font-black text-rose-700 uppercase flex items-center gap-1">
                       ⚠️ Payment Rejected by Admin
                     </p>
@@ -317,24 +340,24 @@ export default function StudentFeeDashboard() {
                   </div>
                 )}
 
-                <div className="bg-slate-50 p-4 border border-slate-200 rounded-xl flex flex-col items-center gap-3 text-center">
-                  <div className="flex items-center gap-1.5 bg-slate-900 text-amber-400 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider">
+                <div className="bg-slate-50 p-4 border border-slate-200/80 rounded-2xl flex flex-col items-center gap-3 text-center">
+                  <div className="flex items-center gap-1.5 bg-gradient-to-r from-blue-700 to-blue-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm">
                     <QrCode size={12} /> Scan & Pay via Any UPI App
                   </div>
                   
-                  <div className="p-2.5 bg-white border border-slate-200 rounded-xl shadow-sm">
-                    <img src="/upi-qr.png" alt="UPI QR Code" className="w-40 h-40 object-contain rounded" />
+                  <div className="p-2.5 bg-white border border-slate-200 rounded-2xl shadow-sm">
+                    <img src="/upi-qr.png" alt="UPI QR Code" className="w-40 h-40 object-contain rounded-xl" />
                   </div>
 
                   <div>
-                    <p className="text-[11px] text-slate-500 font-medium">Amount to Pay:</p>
-                    <p className="text-xl font-black text-slate-900">₹{selectedFee.amount}.00</p>
+                    <p className="text-[11px] text-slate-500 font-bold uppercase tracking-wide">Amount to Pay:</p>
+                    <p className="text-2xl font-black text-slate-900">₹{selectedFee.amount}.00</p>
                   </div>
                 </div>
 
                 <form onSubmit={handlePaymentSubmit} className="space-y-3">
                   <div>
-                    <label className="block text-[10px] font-bold text-slate-700 mb-1 uppercase tracking-wider">
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">
                       {selectedFee.status === "REJECTED" ? "New Transaction UTR / Reference ID:" : "Transaction UTR / Reference ID:"}
                     </label>
                     <input 
@@ -343,13 +366,13 @@ export default function StudentFeeDashboard() {
                       value={utrNumber}
                       onChange={(e) => setUtrNumber(e.target.value)}
                       required
-                      className="w-full bg-slate-50 border border-slate-300 focus:border-amber-500 outline-none rounded-xl p-2.5 text-xs font-mono font-bold text-slate-900 transition-all"
+                      className="w-full px-3 py-2.5 text-xs font-mono font-extrabold text-slate-800 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-700 bg-slate-50"
                     />
                   </div>
                   <button 
                     type="submit" 
                     disabled={submitting}
-                    className="w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider transition shadow-sm active:scale-95 disabled:opacity-50 cursor-pointer"
+                    className="w-full bg-gradient-to-r from-blue-700 to-blue-500 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wide shadow-md hover:scale-[1.02] transition-all cursor-pointer border-none outline-none active:scale-95 disabled:opacity-50"
                   >
                     {submitting 
                       ? "SUBMITTING..." 
@@ -364,11 +387,11 @@ export default function StudentFeeDashboard() {
 
             {/* Pending State View */}
             {selectedFee.status === "PENDING" && (
-              <div className="bg-amber-50/60 border border-amber-200 rounded-xl p-4 text-center text-slate-900 space-y-2 print:hidden">
+              <div className="bg-amber-50/60 border border-amber-200 rounded-2xl p-4 text-center text-slate-900 space-y-2 print:hidden">
                 <Clock className="mx-auto text-amber-600 animate-pulse" size={24} />
                 <p className="font-black text-xs uppercase tracking-wide">Verification In Progress</p>
                 <p className="text-[11px] text-slate-600">Your payment is pending approval. ✅</p>
-                <div className="bg-white p-2.5 rounded-lg font-mono text-xs font-bold text-slate-800 border border-amber-200/80 mt-1">
+                <div className="bg-white p-2.5 rounded-xl font-mono text-xs font-bold text-slate-800 border border-amber-200/80 mt-1">
                   UTR: {selectedFee.utrNumber || "N/A"}
                 </div>
               </div>
@@ -379,7 +402,7 @@ export default function StudentFeeDashboard() {
               <div className="space-y-5">
                 <div 
                   id="printable-receipt-content" 
-                  className="bg-white p-6 border border-slate-200 rounded-xl font-sans text-slate-900 relative overflow-hidden space-y-5"
+                  className="bg-white p-6 border border-slate-200 rounded-2xl font-sans text-slate-900 relative overflow-hidden space-y-5"
                   style={{ width: "100%", boxSizing: "border-box" }}
                 >
                   {/* Subtle Background Watermark */}
@@ -395,11 +418,11 @@ export default function StudentFeeDashboard() {
                       </div>
                       <div>
                         <h2 className="text-base font-black text-slate-900 uppercase tracking-tight">VIRAAM VAANI</h2>
-                        <p className="text-[10px] text-amber-600 font-bold uppercase tracking-wider">FeeReceipt</p>
+                        <p className="text-[10px] text-blue-700 font-bold uppercase tracking-wider">FeeReceipt</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="inline-block bg-emerald-100 text-emerald-800 border border-emerald-300 text-[9px] font-black px-2.5 py-0.5 rounded uppercase tracking-wider mb-1">
+                      <span className="inline-block bg-emerald-50 text-emerald-700 border border-emerald-200 text-[9px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider mb-1">
                         PAID ✅
                       </span>
                       <p className="text-[10px] font-bold text-slate-500 font-mono">Receipt No: VVC-{(selectedFee.id || "00").slice(-4)}</p>
@@ -416,7 +439,7 @@ export default function StudentFeeDashboard() {
                     </div>
                     <div className="text-right space-y-1">
                       <p className="text-slate-400 font-bold text-[9px] uppercase tracking-wider">PAYMENT DETAILS</p>
-                      <p className="font-bold text-amber-600 text-xs">{selectedFee.month.toUpperCase()}, {selectedFee.year}</p>
+                      <p className="font-bold text-blue-700 text-xs">{selectedFee.month.toUpperCase()}, {selectedFee.year}</p>
                       <p className="text-slate-600 text-[11px]">
                         <span className="font-medium text-slate-500">Date:</span>{" "}
                         {selectedFee.updatedAt
@@ -450,9 +473,9 @@ export default function StudentFeeDashboard() {
                   </div>
 
                   {/* 4. Total Amount Bar */}
-                  <div className="flex justify-between items-center bg-slate-900 text-white px-4 py-3 rounded-xl relative z-10">
-                    <span className="uppercase text-[10px] font-bold tracking-wider text-slate-300">Total Paid Amount:</span>
-                    <span className="text-amber-400 text-base font-black">₹{selectedFee.amount}.00</span>
+                  <div className="flex justify-between items-center bg-gradient-to-r from-blue-700 to-blue-500 text-white px-4 py-3 rounded-xl relative z-10">
+                    <span className="uppercase text-[10px] font-bold tracking-wider text-blue-100">Total Paid Amount:</span>
+                    <span className="text-white text-base font-black">₹{selectedFee.amount}.00</span>
                   </div>
 
                   {/* 5. Transaction Verification Box */}
@@ -525,7 +548,7 @@ export default function StudentFeeDashboard() {
 
                 <button 
                   onClick={triggerNativePrint}
-                  className="print:hidden w-full bg-slate-900 hover:bg-black text-white font-black py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-sm active:scale-95 cursor-pointer"
+                  className="print:hidden w-full bg-gradient-to-r from-blue-700 to-blue-500 hover:scale-[1.02] text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition shadow-md active:scale-95 cursor-pointer border-none outline-none"
                 >
                   <Download size={14} /> PRINT OR SAVE RECEIPT (PDF)
                 </button>

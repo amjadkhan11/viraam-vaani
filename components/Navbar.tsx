@@ -153,13 +153,13 @@ export default function Navbar() {
       {/* 🚀 PREMIUM AUTO-LOGOUT POPUP (MODAL)      */}
       {/* ========================================== */}
       {showPopup && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fade-in">
-          <div className="w-full max-w-sm bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-2xl text-center relative overflow-hidden transform scale-100 transition-all duration-300">
+        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-fade-in font-sans">
+          <div className="w-full max-w-sm bg-white border border-slate-200 rounded-3xl p-6 shadow-2xl text-center relative overflow-hidden transform scale-100 transition-all duration-300">
             
             {/* Warning Glow Effect & Icon */}
-            <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-slate-200 shadow-inner relative">
+            <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-blue-100 shadow-inner relative">
               <ShieldAlert className="text-blue-700 animate-bounce" size={32} />
-              <span className="absolute inline-flex h-full w-full rounded-2xl bg-blue-600 opacity-10 animate-ping"></span>
+              <span className="absolute inline-flex h-full w-full rounded-2xl bg-blue-500 opacity-20 animate-ping"></span>
             </div>
 
             {/* Content */}
@@ -169,49 +169,49 @@ export default function Navbar() {
             </p>
 
             {/* Spinner Redirect Loader */}
-            <div className="mt-5 flex items-center justify-center gap-2 text-blue-900 font-extrabold text-[11px] uppercase tracking-wider">
-              <div className="w-4 h-4 border-2 border-blue-900/20 border-t-blue-900 rounded-full animate-spin" />
+            <div className="mt-5 flex items-center justify-center gap-2 text-blue-700 font-extrabold text-[11px] uppercase tracking-wider">
+              <div className="w-4 h-4 border-2 border-blue-700/20 border-t-blue-700 rounded-full animate-spin" />
               Securing Portal...
             </div>
 
             {/* Visual Progress Countdown Line */}
-            <div className="absolute bottom-0 left-0 h-1.5 bg-gradient-to-r from-blue-700 to-slate-900 animate-progress-shrink" />
+            <div className="absolute bottom-0 left-0 h-1.5 bg-gradient-to-r from-blue-700 to-blue-500 animate-progress-shrink" />
           </div>
         </div>
       )}
 
       {/* Navbar Content */}
-      <header className="sticky top-0 z-50 bg-white shadow-sm">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm font-sans">
         <div className="max-w-7xl mx-auto px-4 lg:px-6">
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 group">
-              <div className="relative h-11 w-11 rounded-full bg-white flex items-center justify-center border border-slate-200 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-105 overflow-hidden">
-                <div className="absolute inset-[3px] rounded-full border-[2.5px] border-dashed border-slate-800 opacity-90 animate-[spin_120s_linear_infinite]" />
+              <div className="relative h-11 w-11 rounded-full bg-slate-50 flex items-center justify-center border border-slate-200 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-105 overflow-hidden">
+                <div className="absolute inset-[3px] rounded-full border-[2.5px] border-dashed border-blue-700 opacity-90 animate-[spin_120s_linear_infinite]" />
                 
                 {/* Inner Solid Geometric 'A' Icon */}
                 <div className="relative flex flex-col items-center justify-center z-10 scale-95 mt-[-2px]">
-                  <div className="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[17px] border-b-slate-800 relative flex justify-center">
+                  <div className="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[17px] border-b-blue-700 relative flex justify-center">
                     {/* Cutout to make it look like the Viraam Vaani 'A' */}
-                    <div className="absolute top-[8px] w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[9px] border-b-white" />
+                    <div className="absolute top-[8px] w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[9px] border-b-slate-50" />
                   </div>
                   {/* Horizontal Base Bar of 'A' */}
-                  <div className="w-[18px] h-[3px] bg-slate-800 rounded-sm mt-[1px]" />
+                  <div className="w-[18px] h-[3px] bg-blue-700 rounded-sm mt-[1px]" />
                 </div>
               </div>
 
               {/* 📝 TYPOGRAPHY & BRAND NAME */}
               <div className="flex flex-col justify-center leading-none">
                 <h1 className="font-black text-base lg:text-lg tracking-tight">
-                  <span className="text-blue-700 bg-gradient-to-r from-blue-700 to-slate-900 bg-clip-text">Viraam</span>{" "}
-                  <span className="text-slate-900 bg-gradient-to-r from-slate-900 to-blue-700 bg-clip-text">Vaani</span>
+                  <span className="text-blue-700">Viraam</span>{" "}
+                  <span className="text-slate-900">Vaani</span>
                 </h1>
               </div>
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-2 bg-slate-100 px-2 py-2 rounded-full">
+            <nav className="hidden lg:flex items-center gap-1.5 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/80">
               {[
                 { href: "/", label: "Home" },
                 { href: "/admission", label: "Admission" },
@@ -227,20 +227,20 @@ export default function Navbar() {
                     href={item.href}
                     className={`${navItemBase} ${
                       isActive 
-                        ? "text-blue-900 bg-white shadow-md" 
-                        : "text-slate-600 hover:text-blue-900 hover:bg-white/60"
+                        ? "text-blue-700 bg-white shadow-sm" 
+                        : "text-slate-600 hover:text-blue-700 hover:bg-white/60"
                     }`}
                   >
-                    {item.icon && <item.icon size={16} className="text-blue-600" />}
+                    {item.icon && <item.icon size={16} className="text-blue-700" />}
                     {item.label}
                     {item.hasNotificationDot && (
                       <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600"></span>
                       </span>
                     )}
                     {isActive && (
-                      <span className="absolute bottom-1 left-4 right-4 h-[2px] bg-gradient-to-r from-blue-700 to-slate-900 rounded-full" />
+                      <span className="absolute bottom-1 left-4 right-4 h-[2px] bg-gradient-to-r from-blue-700 to-blue-500 rounded-full" />
                     )}
                   </Link>
                 );
@@ -252,19 +252,19 @@ export default function Navbar() {
               {!user ? (
                 <Link
                   href="/login"
-                  className="bg-gradient-to-r from-blue-900 to-blue-700 text-white px-5 py-2 rounded-full font-semibold border-none outline-none shadow-md hover:shadow-lg transition-all duration-200"
+                  className="bg-gradient-to-r from-blue-700 to-blue-500 text-white px-5 py-2 rounded-full font-semibold border-none outline-none shadow-md hover:scale-105 transition-all duration-200"
                 >
                   Login
                 </Link>
               ) : (
                 <button
                   onClick={() => setSidebarOpen(true)}
-                  className="flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 hover:border-blue-600 hover:bg-slate-100 transition-all duration-300 group shadow-sm"
+                  className="flex items-center gap-2.5 pl-4 pr-1.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 transition-all duration-300 group shadow-sm cursor-pointer"
                 >
-                  <span className="text-xs font-bold text-slate-700 group-hover:text-blue-900 transition-colors">
-                    Welcome, <span className="text-blue-700 font-extrabold capitalize">{getFirstName(user?.name)}</span> 👋
+                  <span className="text-xs font-bold text-slate-700 group-hover:text-blue-700 transition-colors">
+                    Welcome, <span className="text-blue-700 font-black capitalize">{getFirstName(user?.name)}</span> 👋
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-700 to-slate-900 text-white font-black text-sm flex items-center justify-center shadow-md ring-2 ring-slate-200 group-hover:scale-105 transition-transform">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-700 to-blue-500 text-white font-black text-sm flex items-center justify-center shadow-sm ring-2 ring-blue-100 group-hover:scale-105 transition-transform">
                     {user?.name?.charAt(0)?.toUpperCase() || "S"}
                   </div>
                 </button>
@@ -276,12 +276,12 @@ export default function Navbar() {
               {user && (
                 <button
                   onClick={() => setSidebarOpen(true)}
-                  className="flex items-center gap-1.5 py-1 pl-2 pr-1 rounded-full bg-slate-50 border border-slate-200 shadow-sm active:scale-95 transition-all"
+                  className="flex items-center gap-1.5 py-1 pl-2.5 pr-1 rounded-full bg-slate-50 border border-slate-200 shadow-sm active:scale-95 transition-all"
                 >
-                  <span className="text-[10px] font-black text-slate-600 capitalize">
+                  <span className="text-[11px] font-bold text-slate-700 capitalize">
                     Hi, {getFirstName(user?.name)}
                   </span>
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-r from-blue-700 to-blue-600 text-white font-black text-xs flex items-center justify-center ring-2 ring-slate-200">
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-r from-blue-700 to-blue-500 text-white font-black text-xs flex items-center justify-center ring-2 ring-blue-100">
                     {user?.name?.charAt(0)?.toUpperCase() || "S"}
                   </div>
                 </button>
@@ -289,11 +289,11 @@ export default function Navbar() {
 
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="bg-blue-900 text-white p-2 rounded-lg relative"
+                className="bg-gradient-to-r from-blue-700 to-blue-500 text-white p-2 rounded-xl relative shadow-sm"
               >
                 <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5 z-10">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600"></span>
                 </span>
                 {isOpen ? <HiX size={20} /> : <HiMenu size={20} />}
               </button>
@@ -304,8 +304,8 @@ export default function Navbar() {
 
         {/* Mobile Nav Top Menu */}
         {isOpen && (
-          <div className="lg:hidden bg-white border-t border-slate-200">
-            <div className="flex flex-col p-4 gap-3 font-semibold">
+          <div className="lg:hidden bg-white border-t border-slate-200 shadow-xl">
+            <div className="flex flex-col p-4 gap-2 font-semibold">
               {[
                 { href: "/", label: "Home" },
                 { href: "/admission", label: "Admission" },
@@ -320,16 +320,16 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between py-1 px-2 rounded-md ${
-                      isActive ? "text-blue-900 bg-slate-100 font-bold border-l-4 border-blue-900 pl-2" : "text-slate-600"
+                    className={`flex items-center justify-between py-2.5 px-3 rounded-xl transition-all ${
+                      isActive ? "text-blue-700 bg-blue-50 font-bold border-l-4 border-blue-700" : "text-slate-700 hover:bg-slate-50"
                     }`}
                   >
                     <span className="flex items-center gap-2">
                       {item.label}
                       {item.hasNotificationDot && (
                         <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600"></span>
                         </span>
                       )}
                     </span>
@@ -341,7 +341,7 @@ export default function Navbar() {
                 <Link
                   href="/login"
                   onClick={() => setIsOpen(false)}
-                  className="bg-gradient-to-r from-blue-900 to-blue-700 text-white text-center py-2 rounded-xl font-semibold mt-1"
+                  className="bg-gradient-to-r from-blue-700 to-blue-500 text-white text-center py-3 rounded-xl font-bold mt-2 shadow-sm"
                 >
                   Login
                 </Link>
@@ -354,55 +354,55 @@ export default function Navbar() {
       {/* Sidebar Overlay */}
       {sidebarOpen && (
         <div
-          className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[90] transition-opacity"
+          className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-[90] transition-opacity"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Premium Right Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-[100dvh] w-80 bg-gradient-to-b from-slate-900 via-slate-800 to-blue-900 text-white shadow-[-10px_0_30px_rgba(15,23,42,0.5)] z-[100] transform transition-transform duration-300 ease-out border-l border-slate-700 flex flex-col justify-between overflow-hidden no-scrollbar ${
+        className={`fixed top-0 right-0 h-[100dvh] w-80 bg-white text-slate-900 shadow-2xl z-[100] transform transition-transform duration-300 ease-out border-l border-slate-200 flex flex-col justify-between overflow-hidden no-scrollbar font-sans ${
           sidebarOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Sidebar Header */}
         <div className="flex flex-col">
-          <div className="relative p-4 bg-gradient-to-r from-blue-900/50 to-slate-800/50 border-b border-slate-700 flex justify-between items-center overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-24 h-24 bg-blue-600/10 rounded-full blur-xl" />
+          <div className="relative p-5 bg-gradient-to-r from-blue-50 to-white border-b border-slate-200 flex justify-between items-center overflow-hidden">
+            <div className="absolute -top-10 -right-10 w-24 h-24 bg-blue-200/30 rounded-full blur-xl" />
             <div className="z-10">
-              <div className="flex items-center gap-1.5 text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-0.5">
-                <Sparkles size={10} className="animate-pulse" /> Welcome, {user ? getFirstName(user?.name) : "Student"}
+              <div className="flex items-center gap-1.5 text-[10px] font-black text-blue-700 uppercase tracking-widest mb-0.5">
+                <Sparkles size={12} className="animate-pulse" /> Welcome, {user ? getFirstName(user?.name) : "Student"}
               </div>
-              <h2 className="font-extrabold text-xl bg-gradient-to-r from-white via-slate-100 to-blue-600 bg-clip-text text-transparent">
-                Viraam Vaani
+              <h2 className="font-black text-xl text-slate-900">
+                Viraam <span className="text-blue-700">Vaani</span>
               </h2>
             </div>
             <button 
               onClick={() => setSidebarOpen(false)}
-              className="z-10 p-1.5 rounded-full bg-white/10 text-white hover:bg-blue-600 transition-all duration-200 shadow-inner"
+              className="z-10 p-2 rounded-full bg-slate-100 text-slate-600 hover:bg-blue-100 hover:text-blue-700 transition-all duration-200 cursor-pointer border-none outline-none"
             >
               <HiX size={18} />
             </button>
           </div>
 
           {/* Profile Card */}
-          <div className="p-4 text-center border-b border-slate-700 bg-gradient-to-b from-white/[0.02] to-transparent">
+          <div className="p-5 text-center border-b border-slate-100 bg-slate-50/50">
             <div className="relative w-16 h-16 mx-auto group">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-600 via-blue-700 to-blue-900 animate-spin-slow opacity-70 p-[2px] shadow-[0_0_12px_rgba(37,99,235,0.3)]">
-                <div className="w-full h-full bg-slate-900 rounded-full" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-700 to-blue-500 animate-spin-slow opacity-80 p-[2px] shadow-md">
+                <div className="w-full h-full bg-white rounded-full" />
               </div>
-              <div className="absolute inset-[3px] rounded-full bg-gradient-to-br from-blue-900 to-slate-800 text-white flex items-center justify-center text-2xl font-black border border-slate-300/30 shadow-inner">
+              <div className="absolute inset-[3px] rounded-full bg-gradient-to-br from-blue-700 to-blue-500 text-white flex items-center justify-center text-2xl font-black shadow-inner">
                 {user?.name?.charAt(0)?.toUpperCase() || "A"}
               </div>
-              <span className="absolute bottom-0 right-0 bg-gradient-to-r from-blue-700 to-slate-900 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full border border-slate-900 shadow-sm">
+              <span className="absolute bottom-0 right-0 bg-blue-700 text-white text-[8px] font-black px-1.5 py-0.5 rounded-full border border-white shadow-sm">
                 {user?.className || "8th"}
               </span>
             </div>
-            <h3 className="mt-2.5 font-bold text-base tracking-wide bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent capitalize">
+            <h3 className="mt-2.5 font-black text-base tracking-wide text-slate-900 capitalize">
               {user?.name || "Amjad Ansari"}
             </h3>
-            <p className="text-[9px] text-slate-400 font-semibold tracking-wider mt-0.5 uppercase">
-              Active Account
+            <p className="text-[10px] text-blue-700 font-bold tracking-wider mt-0.5 uppercase bg-blue-50 border border-blue-200 inline-block px-2 py-0.5 rounded-md">
+              Active Student Account
             </p>
           </div>
         </div>
@@ -429,20 +429,20 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setSidebarOpen(false)}
-                className={`flex items-center justify-between p-3.5 rounded-xl border transition-all duration-300 group min-h-[56px] ${
+                className={`flex items-center justify-between p-3.5 rounded-2xl border transition-all duration-300 group min-h-[52px] ${
                   isSidebarItemActive
-                    ? "bg-blue-600/10 border-blue-600/40 text-blue-600 font-bold"
-                    : "border-white/[0.03] bg-white/[0.02] text-slate-300 hover:bg-gradient-to-r hover:from-blue-600/10 hover:to-transparent hover:border-blue-600/30 hover:text-blue-600"
+                    ? "bg-blue-50 border-blue-200 text-blue-700 font-bold shadow-sm"
+                    : "border-slate-100 bg-white text-slate-700 hover:bg-blue-50/50 hover:border-blue-200 hover:text-blue-700"
                 }`}
               >
                 <div className="flex items-center gap-3.5">
                   <div className={`p-2 rounded-xl transition-colors relative ${
-                    isSidebarItemActive ? "bg-blue-600/20 text-blue-600" : "bg-white/[0.04] text-slate-400 group-hover:bg-blue-600/20 group-hover:text-blue-600"
+                    isSidebarItemActive ? "bg-blue-100 text-blue-700" : "bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-700"
                   }`}>
                     {item.hasBadge && (
                       <span className="absolute top-1.5 right-1.5 flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-600 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600"></span>
                       </span>
                     )}
                     <Icon size={18} />
@@ -450,7 +450,7 @@ export default function Navbar() {
                   <span className="font-semibold tracking-wide text-sm">{item.label}</span>
                 </div>
                 <div className={`w-1.5 h-1.5 rounded-full transition-all ${
-                  isSidebarItemActive ? "bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)]" : "bg-transparent group-hover:bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)]"
+                  isSidebarItemActive ? "bg-blue-700 shadow-sm" : "bg-transparent group-hover:bg-blue-700"
                 }`} />
               </Link>
             );
@@ -458,12 +458,12 @@ export default function Navbar() {
         </div>
 
         {/* Premium Logout Button Section */}
-        <div className="p-4 border-t border-slate-700 bg-slate-900/40">
+        <div className="p-4 border-t border-slate-200 bg-slate-50">
           <button
             onClick={handleLogout}
-            className="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-bold tracking-wide text-sm transition-all duration-200 active:scale-[0.98] shadow-lg shadow-red-900/30 group"
+            className="w-full bg-rose-600 hover:bg-rose-700 text-white py-3 rounded-xl flex items-center justify-center gap-2 font-bold tracking-wide text-sm transition-all duration-200 active:scale-[0.98] shadow-md cursor-pointer border-none outline-none"
           >
-            <LogOut size={16} className="group-hover:-translate-x-0.5 transition-transform" />
+            <LogOut size={16} />
             Logout Securely
           </button>
         </div>
