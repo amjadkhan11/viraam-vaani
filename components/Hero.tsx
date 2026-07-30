@@ -21,11 +21,11 @@ export default function Hero() {
               🎉 Admissions Open
             </span>
 
-            <h1 className="mt-6 text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight text-slate-900">
-              Guiding Young
-              <span className="text-blue-700"> Minds </span>
-              For Academic Success
-            </h1>
+            <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl lg:text-7xl lg:leading-[1.1]">
+  Master Your{" "}
+  <span className="text-blue-700">Future with</span>{" "}
+  Expert Guidance
+</h1>
 
             <div className="mt-8 relative max-w-xl rounded-2xl bg-white p-6 shadow-[0_10px_30px_-5px_rgba(0,0,0,0.05)] border border-slate-200/80 group overflow-hidden">
               {/* Decorative Glow */}

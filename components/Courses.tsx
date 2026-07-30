@@ -79,9 +79,9 @@ export default function Courses() {
             Our Courses
           </span>
 
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
-            Programs We Offer
-          </h2>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight leading-none text-slate-900">
+  Explore Our <span className="text-blue-700">Programs</span>
+</h2>
 
           <p className="text-sm md:text-base text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
             Structured academic programs designed to help students build strong foundations, excel in examinations, and achieve their academic goals.

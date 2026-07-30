@@ -1,105 +1,119 @@
 "use client";
 
 import {
-  GraduationCap,
-  FileCheck,
-  LibraryBig,
+  Heart,
+  Lightbulb,
   Trophy,
-  Sparkles,
+  Handshake,
+  Users,
+  Brain,
 } from "lucide-react";
 
+const features = [
+  {
+    title: "Passion",
+    description:
+      "We teach with fire, commitment, and love for growth— inspiring every student to find purpose in learning.",
+    icon: Heart,
+  },
+  {
+    title: "Innovation",
+    description:
+      "We challenge old methods and create new ways to learn, lead, and live with clarity and confidence.",
+    icon: Lightbulb,
+  },
+  {
+    title: "Excellence",
+    description:
+      "We strive for excellence in every detail—from teaching to testing and from ideas to transformation.",
+    icon: Trophy,
+  },
+  {
+    title: "Collaboration",
+    description:
+      "We believe success is collective. Together, we grow stronger, wiser, and unstoppable.",
+    icon: Handshake,
+  },
+  {
+    title: "Community",
+    description:
+      "Viraam Vaani is a family where minds learn, hearts connect, and dreams take shape.",
+    icon: Users,
+  },
+  {
+    title: "Creativity",
+    description:
+      "We encourage imagination because true intelligence grows when ideas flow freely.",
+    icon: Brain,
+  },
+];
+
 export default function WhyChooseUs() {
-  const features = [
-    {
-      icon: <GraduationCap size={28} className="text-blue-900 group-hover:text-white transition-colors duration-300" />,
-      title: "Expert Faculty",
-      description:
-        "Learn from experienced and dedicated teachers committed to your academic success.",
-      badge: "Mentors",
-    },
-    {
-      icon: <FileCheck size={28} className="text-blue-700 group-hover:text-white transition-colors duration-300" />,
-      title: "Weekly Tests",
-      description:
-        "Regular assessments and performance tracking to strengthen concepts and confidence.",
-      badge: "Analysis",
-    },
-    {
-      icon: <LibraryBig size={28} className="text-blue-600 group-hover:text-white transition-colors duration-300" />,
-      title: "Study Materials",
-      description:
-        "Well-structured notes, assignments, PDFs and practice sheets for every subject.",
-      badge: "Premium",
-    },
-    {
-      icon: <Trophy size={28} className="text-green-600 group-hover:text-white transition-colors duration-300" />,
-      title: "Excellent Results",
-      description:
-        "Personal mentoring and result-oriented guidance to help students achieve their goals.",
-      badge: "Proven",
-    },
-  ];
-
   return (
-    <section className="relative py-5 md:py-16 overflow-hidden bg-slate-50 font-sans">
-      
-      {/* Background Decorative Mesh & Glows */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40 pointer-events-none" />
-      
-      <div className="absolute top-10 left-[-10%] h-[600px] w-[600px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-10 right-[-10%] h-[600px] w-[600px] bg-blue-900/10 rounded-full blur-[140px] pointer-events-none" />
+    <section className="relative overflow-hidden bg-white py-16 md:py-24">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <div className="absolute -top-40 left-0 h-80 w-80 rounded-full bg-blue-100 blur-3xl opacity-50" />
+        <div className="absolute -bottom-40 right-0 h-80 w-80 rounded-full bg-blue-200 blur-3xl opacity-40" />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto px-5 z-10">
-
-        {/* HEADER SECTION */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white text-slate-900 text-xs font-black uppercase tracking-widest border border-slate-200 shadow-sm">
-            <Sparkles size={12} className="text-blue-600 animate-pulse" />
-            Why Choose Us
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <span className="inline-block rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-bold uppercase tracking-[0.25em] text-blue-700">
+            VIRAAM VAANI
           </span>
 
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-none">
-            Why Choose <span className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-600 bg-clip-text text-transparent">Viraam Vaani</span> 
+          <h2 className="mt-5 text-3xl font-black leading-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl">
+            Why{" "}
+            <span className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-500 bg-clip-text text-transparent">
+              Viraam Vaani
+            </span>{" "}
+            ?
           </h2>
 
-          <p className="text-sm md:text-base text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
-            We combine quality education, expert mentorship, structured learning, and continuous evaluation to help students excel academically and build a successful future.
+          <div className="mx-auto mt-5 h-1 w-24 rounded-full bg-blue-700" />
+
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base md:text-lg">
+            We provide the perfect environment for academic excellence through
+            innovative teaching, experienced mentors, and a student-first
+            approach that empowers every learner to achieve success.
           </p>
         </div>
 
-        {/* PREMIUM CARDS GRID */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {features.map((item, index) => (
-            <div
-              key={index}
-              className="group bg-white border-2 border-slate-200 rounded-[28px] p-6 lg:p-8 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:shadow-2xl hover:border-blue-600/30 hover:-translate-y-2 transition-all duration-300 relative overflow-hidden flex flex-col"
-            >
-              {/* Invisible Background Light effect on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-slate-100/0 via-slate-100/50 to-slate-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+        {/* Cards */}
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((item, index) => {
+            const Icon = item.icon;
 
-              {/* Card Top Row: Icon Container + Small Badge */}
-              <div className="flex items-center justify-between gap-4 z-10">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-slate-50 border border-slate-200 text-slate-800 group-hover:bg-gradient-to-br group-hover:from-blue-900 group-hover:to-blue-700 group-hover:border-transparent group-hover:shadow-lg group-hover:shadow-blue-900/20 transition-all duration-300 transform group-hover:rotate-3">
-                  {item.icon}
+            return (
+              <div
+                key={index}
+                className="group relative rounded-3xl border border-slate-200 bg-white p-8 pt-14 shadow-sm transition-all duration-500 hover:-translate-y-3 hover:border-blue-200 hover:shadow-2xl"
+              >
+                {/* Icon */}
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full border border-slate-200 bg-white shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:border-blue-700 group-hover:bg-blue-700">
+                    <Icon className="h-9 w-9 text-blue-700 transition-colors duration-500 group-hover:text-white" />
+                  </div>
                 </div>
-                
-                <span className="text-[9px] font-black tracking-widest text-slate-500 uppercase bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-md group-hover:bg-slate-100 group-hover:text-blue-700 group-hover:border-slate-300 transition-colors">
-                  {item.badge}
-                </span>
+
+                {/* Title */}
+                <h3 className="text-center text-xl font-bold text-slate-900 md:text-2xl">
+                  {item.title}
+                </h3>
+
+                {/* Description */}
+                <p className="mt-4 text-center text-sm leading-7 text-slate-600 md:text-base">
+                  {item.description}
+                </p>
+
+                {/* Hover Line */}
+                <div className="mx-auto mt-8 h-1 w-0 rounded-full bg-blue-700 transition-all duration-500 group-hover:w-20"></div>
               </div>
-
-              {/* Card Content */}
-              <h3 className="mt-6 text-xl font-black text-slate-900 group-hover:text-blue-900 transition-colors duration-200 tracking-tight z-10">
-                {item.title}
-              </h3>
-
-              <p className="mt-3 text-xs md:text-sm text-slate-600 font-medium leading-relaxed z-10">
-                {item.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
-
       </div>
     </section>
   );

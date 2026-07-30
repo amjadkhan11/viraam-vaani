@@ -115,9 +115,9 @@ export default function Notifications() {
             Live Notice Board
           </span>
 
-          <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
-            Latest Announcements
-          </h2>
+          <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight text-slate-900">
+  Latest <span className="text-blue-700">Updates</span>
+</h2>
 
           <p className="text-sm md:text-base text-slate-600 font-medium max-w-xl mx-auto leading-relaxed">
             Check recent updates regarding schedules, examination grids, and fresh batch timelines here.

@@ -82,7 +82,7 @@ export default function AdmissionPopup() {
           </h2>
           
           <p className="text-slate-600 font-medium text-xs md:text-sm mt-2 max-w-xs mx-auto leading-relaxed">
-            Secure your seat at <strong className="text-slate-900">Viraam Vaani Academy</strong> today and take the first step towards a brighter academic future!
+            Secure your seat at <strong className="text-slate-900">Viraam Vaani</strong> today and take the first step towards a brighter academic future!
           </p>
 
           {/* Offer Box */}
