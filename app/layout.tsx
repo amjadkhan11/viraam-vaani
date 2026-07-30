@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Viraam Vaani",
     description: "A New Ray of Hope",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
 
   icons: {
