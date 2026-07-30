@@ -37,18 +37,15 @@ export default function WhatsAppButton() {
 
       {/* Actual Floating Button - Compact size */}
       <a
-        href="https://wa.me/919288024338?text=Hello%20Viraam%20Vaan,%20I%20have%20an%20enquiry%20regarding%20admissions."
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Chat on WhatsApp"
-        className="pointer-events-auto w-11 h-11 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-110 active:scale-95 transition-all duration-300 relative group"
-      >
-        {/* Pulsing Outer Glow ring */}
-        <span className="absolute inset-0 rounded-full bg-emerald-500/40 animate-ping opacity-75 group-hover:animate-none" />
-        
-        {/* Icon size reduced from 32 to 22 (Perfectly small & professional) */}
-        <FaWhatsapp size={22} className="relative z-10" />
-      </a>
+  href="https://wa.me/919288024338?text=Hello%20Viraam%20Vaani,%20I%20would%20like%20to%20know%20more%20about%20your%20institute."
+  target="_blank"
+  rel="noopener noreferrer"
+  title="Chat on WhatsApp"
+  className="pointer-events-auto w-11 h-11 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-110 active:scale-95 transition-all duration-300 relative group"
+>
+  <span className="absolute inset-0 rounded-full bg-emerald-500/40 animate-ping opacity-75 group-hover:animate-none" />
+  <FaWhatsapp size={22} className="relative z-10" />
+</a>
     </div>
   );
 }
