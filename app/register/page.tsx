@@ -169,7 +169,7 @@ export default function RegisterPage() {
             <h1 className="text-xl font-black tracking-tight text-slate-900 transition-colors group-hover:text-blue-700">
               Viraam Vaani
             </h1>
-            <p className="mt-0.5 text-[9px] font-bold uppercase tracking-widest text-blue-700">Student Portal</p>
+           
           </Link>
           
           {/* Form Card */}
