@@ -12,19 +12,21 @@ export default function LayoutWrapper({
 }) {
   const pathname = usePathname();
 
-  const isAdminPage = pathname.startsWith("/admin");
+  // Admin, Login aur Register sabhi par Navbar/Footer/WhatsApp hide rahega
+  const isAuthOrAdmin =
+    pathname.startsWith("/admin") ||
+    pathname === "/login" ||
+    pathname === "/register";
 
   return (
     <>
-      {!isAdminPage && <Navbar />}
+      {!isAuthOrAdmin && <Navbar />}
 
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
 
-      {!isAdminPage && <Footer />}
+      {!isAuthOrAdmin && <Footer />}
 
-      {!isAdminPage && <WhatsAppButton />}
+      {!isAuthOrAdmin && <WhatsAppButton />}
     </>
   );
 }

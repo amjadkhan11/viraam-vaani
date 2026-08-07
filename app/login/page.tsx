@@ -3,7 +3,8 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Mail, Lock, Eye, EyeOff, Sparkles, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
+import { Mail, Lock, Eye, EyeOff, ArrowRight, X } from "lucide-react";
 import Swal from "sweetalert2";
 
 export default function LoginPage() {
@@ -47,8 +48,8 @@ export default function LoginPage() {
           icon: "error",
           title: "AUTHENTICATION FAILED",
           text: data.error || "Invalid user credentials.",
-          confirmButtonColor: "#1e3a8a",
-          customClass: { popup: "rounded-3xl font-sans" }
+          confirmButtonColor: "#1d4ed8",
+          customClass: { popup: "rounded-3xl font-sans" },
         });
       }
     } catch {
@@ -57,7 +58,7 @@ export default function LoginPage() {
         title: "CONNECTION ERROR",
         text: "Something went wrong while connecting to the auth hub.",
         confirmButtonColor: "#ef4444",
-        customClass: { popup: "rounded-3xl font-sans" }
+        customClass: { popup: "rounded-3xl font-sans" },
       });
     } finally {
       setIsLoading(false);
@@ -65,177 +66,165 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="h-auto md:h-screen w-full flex flex-col md:grid md:grid-cols-12 bg-slate-100 font-sans relative selection:bg-blue-600/20">
-
+    <div className="relative flex min-h-screen w-full flex-col bg-white font-sans md:grid md:grid-cols-12">
       {/* DESKTOP LEFT SIDE PANEL */}
-      <div className="hidden md:flex md:col-span-6 bg-gradient-to-br from-blue-950 via-slate-950 to-blue-900 relative flex-col justify-between p-12 text-white overflow-hidden shadow-2xl z-20">
-        <div className="absolute top-[-20%] left-[-20%] w-[500px] h-[500px] rounded-full bg-blue-600/20 blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] rounded-full bg-blue-500/20 blur-[100px] pointer-events-none" />
+      <div className="relative hidden flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 p-12 text-white md:col-span-6 md:flex">
+        {/* Glow Spheres matching 'Why Choose Us' background styling */}
+        <div className="pointer-events-none absolute -top-40 left-0 h-96 w-96 rounded-full bg-blue-100 opacity-20 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-40 right-0 h-96 w-96 rounded-full bg-blue-200 opacity-20 blur-3xl" />
 
-        {/* CINEMATIC PERFECTLY ROUND LOGO (DESKTOP) */}
-        <div className="flex items-center gap-4 relative z-10">
-          <div className="relative w-16 h-16 rounded-full bg-gradient-to-b from-slate-950 to-slate-900 p-1 border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.4)] flex items-center justify-center overflow-hidden flex-shrink-0">
+        {/* LOGO & BRAND NAME (CLICKABLE TO HOME) */}
+        <Link
+          href="/"
+          className="group relative z-10 flex cursor-pointer flex-col items-center space-y-4 text-center"
+        >
+          <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border border-blue-200/30 bg-white/10 p-2 backdrop-blur-md transition-transform duration-500 group-hover:scale-105 group-hover:border-white">
             <Image
               src="/images/logo.jpeg"
               alt="Viraam Vaani Logo"
-              width={56}
-              height={56}
+              width={96}
+              height={96}
               priority
-              className="rounded-full object-cover w-full h-full drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]"
+              className="h-full w-full rounded-full object-cover"
             />
           </div>
-          <div>
-            <span className="text-2xl font-black tracking-tight text-white block">Viraam Vaani</span>
-          </div>
-        </div>
+          <h1 className="text-3xl font-black tracking-tight text-white transition-colors group-hover:text-blue-200">
+            Viraam Vaani
+          </h1>
+        </Link>
 
-        <div className="my-auto space-y-8 relative z-10">
-          <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-xs font-semibold text-blue-200 shadow-inner">
-              <Sparkles size={14} className="animate-pulse text-blue-300" />
-              Welcome Back
-            </div>
-            <h2 className="text-3xl lg:text-4xl font-black tracking-tight leading-tight bg-gradient-to-r from-white via-slate-100 to-blue-200 bg-clip-text text-transparent">
-              Continue Your <br />
-              Learning Journey.
-            </h2>
-            <p className="text-sm text-slate-300 font-medium max-w-xs leading-relaxed">
-              Sign in to access your student dashboard, study materials, exam results, fee records, and important announcements.
-            </p>
-          </div>
-
-          <div className="space-y-3 pt-2">
-            <div className="flex items-center gap-3">
-              <CheckCircle2 size={18} className="text-emerald-400 flex-shrink-0" />
-              <span className="text-xs text-slate-200 font-bold">Secure Student Login</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <CheckCircle2 size={18} className="text-emerald-400 flex-shrink-0" />
-              <span className="text-xs text-slate-200 font-bold">Access Everything in One Place</span>
-            </div>
-          </div>
+        {/* FOOTER COPYRIGHT */}
+        <div className="absolute bottom-6 text-xs font-medium text-blue-200/70">
+          © {new Date().getFullYear()} Viraam Vaani. All rights reserved.
         </div>
       </div>
 
-      {/* RIGHT SIDE PANEL */}
-      <div className="flex-1 md:col-span-6 flex flex-col justify-start md:justify-center items-center relative overflow-hidden px-4 w-full pt-6 pb-8 h-auto md:h-full">
-        
-        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-blue-200/40 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-slate-200/50 blur-[120px] pointer-events-none" />
+      {/* RIGHT SIDE PANEL / MOBILE CONTAINER */}
+      <div className="relative flex flex-1 flex-col items-center justify-center bg-white px-6 py-12 md:col-span-6">
+        {/* ENHANCED CLOSE BUTTON (TOP-RIGHT) */}
+        <Link
+          href="/"
+          title="Back to Home"
+          className="group absolute top-6 right-6 flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 shadow-sm transition-all duration-300 hover:border-blue-700 hover:bg-blue-700 hover:text-white hover:shadow-md"
+        >
+          <X size={18} className="transition-transform duration-300 group-hover:rotate-90" />
+        </Link>
 
-        <div className="w-full max-w-md flex flex-col items-center relative z-10 mt-0 mb-6">
-          
-          {/* CINEMATIC LOGO HERO (MOBILE VIEW) */}
-          <div className="flex md:hidden flex-col items-center text-center mb-3">
-            <div className="relative w-12 h-12 rounded-full bg-gradient-to-b from-slate-950 to-slate-900 p-0.5 border border-blue-900/20 shadow-md flex items-center justify-center overflow-hidden flex-shrink-0">
+        <div className="flex w-full max-w-sm flex-col items-center">
+          {/* MOBILE LOGO DISPLAY (CLICKABLE TO HOME) */}
+          <Link
+            href="/"
+            className="group mb-6 flex cursor-pointer flex-col items-center text-center md:hidden"
+          >
+            <div className="relative mb-2 flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white p-1 shadow-sm transition-transform duration-300 group-hover:scale-105 group-hover:border-blue-700">
               <Image
                 src="/images/logo.jpeg"
                 alt="Viraam Vaani Logo"
-                width={44}
-                height={44}
+                width={72}
+                height={72}
                 priority
-                className="rounded-full object-cover w-full h-full"
+                className="h-full w-full rounded-full object-cover"
               />
             </div>
-            <h1 className="text-lg font-black tracking-tight text-slate-950 mt-1 leading-none">
-              Viraam <span className="text-blue-900">Vaani</span>
+            <h1 className="text-xl font-black tracking-tight text-slate-900 transition-colors group-hover:text-blue-700">
+              Viraam Vaani
             </h1>
-            <p className="text-[8px] text-blue-700 font-bold tracking-widest uppercase mt-0.5">Student Portal</p>
-          </div>
-          
-          <div className="w-full bg-white border-2 border-slate-200 rounded-[24px] p-5 md:p-8 shadow-xl relative overflow-hidden flex flex-col">
+          </Link>
+
+          {/* FORM HEADER */}
+          <div className="mb-8 w-full text-center">
             
-            <div className="text-center mb-3.5 flex-shrink-0">
-              <h2 className="text-base font-black tracking-tight text-slate-950">
-                Welcome Back!
-              </h2>
-              <p className="text-[10px] text-slate-500 font-semibold mt-0.5">
-                Enter your email and password to access your student portal.
-              </p>
+            <h2 className="mt-3 text-2xl font-black tracking-tight text-slate-900 md:text-3xl">
+              Welcome back
+            </h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+              Sign in with your email and password
+            </p>
+          </div>
+
+          {/* LOGIN FORM */}
+          <form onSubmit={handleLogin} className="w-full space-y-5">
+            {/* EMAIL INPUT */}
+            <div className="w-full space-y-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                Email Address
+              </label>
+              <div className="relative w-full">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                  <Mail size={18} />
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  onChange={handleChange}
+                  placeholder="you@email.com"
+                  className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 text-sm font-medium text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-700 focus:bg-white focus:ring-2 focus:ring-blue-100"
+                />
+              </div>
             </div>
 
-            <form onSubmit={handleLogin} className="space-y-3">
-              
-              {/* EMAIL INPUT */}
-              <div className="space-y-1">
-                <label className="text-[9px] font-black uppercase tracking-wider text-slate-950 block pl-0.5">
-                  Email Address
-                </label>
-                <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-600 group-focus-within:text-blue-900 transition-colors">
-                    <Mail size={14} />
-                  </div>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    onChange={handleChange}
-                    placeholder="amjad@viraamvaani.com"
-                    className="w-full pl-9 pr-4 py-2 bg-white border-2 border-slate-300 rounded-xl text-black font-medium placeholder-slate-400 text-xs outline-none transition-all focus:border-blue-700 focus:ring-4 focus:ring-blue-100 shadow-sm"
-                  />
+            {/* PASSWORD INPUT */}
+            <div className="w-full space-y-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
+                Password
+              </label>
+              <div className="relative w-full">
+                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                  <Lock size={18} />
                 </div>
-              </div>
-
-              {/* PASSWORD INPUT */}
-              <div className="space-y-1">
-                <label className="text-[9px] font-black uppercase tracking-wider text-slate-950 block pl-0.5">
-                  Password
-                </label>
-                <div className="relative group">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-600 group-focus-within:text-blue-900 transition-colors">
-                    <Lock size={14} />
-                  </div>
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    required
-                    onChange={handleChange}
-                    placeholder="••••••••••••"
-                    className="w-full pl-9 pr-10 py-2 bg-white border-2 border-slate-300 rounded-xl text-black font-medium placeholder-slate-400 text-xs outline-none transition-all focus:border-blue-700 focus:ring-4 focus:ring-blue-100 shadow-sm"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-600 hover:text-black transition-colors"
-                  >
-                    {showPassword ? <EyeOff size={14} /> : <Eye size={14} />}
-                  </button>
-                </div>
-              </div>
-
-              {/* SIGN IN BUTTON */}
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full mt-1 bg-gradient-to-r from-blue-900 via-slate-900 to-blue-950 hover:from-blue-950 hover:to-slate-950 text-white py-2 rounded-xl text-xs font-black tracking-wide transition-all duration-200 shadow-md active:scale-[0.99] flex items-center justify-center gap-2 group disabled:opacity-50"
-              >
-                {isLoading ? "Validating Portal..." : "Sign In"}
-                {!isLoading && <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform font-bold" />}
-              </button>
-
-            </form>
-
-            <div className="mt-3.5 pt-2 border-t-2 border-slate-100 text-center flex-shrink-0">
-              <p className="text-[10px] text-slate-800 font-bold">
-                Don&apos;t have an account?{" "}
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  required
+                  onChange={handleChange}
+                  placeholder="••••••••••••"
+                  className="h-11 w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-10 text-sm font-medium text-slate-900 placeholder-slate-400 outline-none transition-all focus:border-blue-700 focus:bg-white focus:ring-2 focus:ring-blue-100"
+                />
                 <button
                   type="button"
-                  onClick={() => router.push("/register")}
-                  className="text-blue-900 hover:text-blue-950 font-black transition-all underline underline-offset-4 decoration-blue-900"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-slate-400 transition-colors hover:text-slate-600"
                 >
-                  Create an account
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
-              </p>
+              </div>
             </div>
 
+            {/* SUBMIT BUTTON */}
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="group flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-blue-700 text-sm font-semibold tracking-wide text-white shadow-sm transition-all duration-300 hover:bg-blue-800 disabled:opacity-50"
+            >
+              <span>{isLoading ? "Validating Portal..." : "Continue"}</span>
+              {!isLoading && (
+                <ArrowRight
+                  size={18}
+                  className="transition-transform duration-300 group-hover:translate-x-1.5"
+                />
+              )}
+            </button>
+          </form>
+
+          {/* REGISTER LINK */}
+          <div className="relative z-20 mt-8 text-center">
+            <p className="text-xs text-slate-600">
+              Don&apos;t have an account?{" "}
+              <button
+                type="button"
+                onClick={() => router.push("/register")}
+                className="inline-block cursor-pointer font-bold text-blue-700 transition-colors duration-200 hover:text-blue-900 hover:underline"
+              >
+                Create an account
+              </button>
+            </p>
           </div>
 
-          {/* SECURE FOOTER BADGE */}
-          <div className="mt-2 flex items-center gap-1.5 text-slate-950 font-black text-[8px] bg-white px-2.5 py-1 rounded-full border-2 border-slate-300 shadow-sm flex-shrink-0">
-            <ShieldCheck size={12} className="text-emerald-600" />
-            <span>Secure Student Portal</span>
+          {/* MOBILE COPYRIGHT */}
+          <div className="mt-12 block text-center text-xs text-slate-400 md:hidden">
+            © {new Date().getFullYear()} Viraam Vaani. All rights reserved.
           </div>
-
         </div>
       </div>
     </div>
