@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { 
   Layers, Calendar, CreditCard, 
   Clock, X, Send, Download, AlertTriangle, CheckCircle2, ShieldCheck, QrCode
@@ -33,6 +33,17 @@ export default function StudentFeeDashboard() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [globalError, setGlobalError] = useState<string | null>(null);
+
+  // Ref for auto-scrolling to UTR input field
+  const utrInputRef = useRef<HTMLInputElement | null>(null);
+
+  // Function to smoothly scroll to UTR input & focus
+  const scrollToUtrInput = () => {
+    if (utrInputRef.current) {
+      utrInputRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      utrInputRef.current.focus();
+    }
+  };
 
   // Database Fetch Pipeline
   const fetchStudentDataFromDatabase = useCallback(async (email: string) => {
@@ -195,10 +206,10 @@ export default function StudentFeeDashboard() {
         }
       `}</style>
 
-      {/* Main Container - Fresh Blue & Slate White Background */}
+      {/* Main Container */}
       <div className="print:hidden min-h-screen bg-gradient-to-br from-slate-100 via-white to-blue-50 p-4 md:p-8 font-sans relative overflow-hidden">
         
-        {/* Light Mesh Accent Blurs (Hero Theme) */}
+        {/* Light Mesh Accent Blurs */}
         <div className="absolute top-20 left-20 h-80 w-80 rounded-full bg-blue-300/20 blur-3xl pointer-events-none" />
         <div className="absolute bottom-20 right-20 h-80 w-80 rounded-full bg-blue-400/20 blur-3xl pointer-events-none" />
 
@@ -207,8 +218,6 @@ export default function StudentFeeDashboard() {
           {/* HERO BRANDING PROFILE BANNER CARD */}
           {student && (
             <div className="relative bg-gradient-to-r from-blue-700 to-blue-500 rounded-3xl p-6 md:p-8 text-white shadow-xl overflow-hidden">
-              
-              {/* Internal Decorative Accents */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 text-center md:text-left">
@@ -340,33 +349,46 @@ export default function StudentFeeDashboard() {
                   </div>
                 )}
 
-                <div className="bg-slate-50 p-4 border border-slate-200/80 rounded-2xl flex flex-col items-center gap-3 text-center">
-                  <div className="flex items-center gap-1.5 bg-gradient-to-r from-blue-700 to-blue-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider shadow-sm">
-                    <QrCode size={12} /> Scan & Pay via Any UPI App
+                <div className="bg-slate-50 p-6 sm:p-8 border border-slate-200/80 rounded-2xl flex flex-col items-center gap-5 text-center max-w-md mx-auto">
+                  <div className="flex items-center gap-2 bg-gradient-to-r from-blue-700 to-blue-500 text-white px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider shadow-sm">
+                    <QrCode size={16} /> Scan & Pay via Any UPI App
                   </div>
                   
-                  <div className="p-2.5 bg-white border border-slate-200 rounded-2xl shadow-sm">
-                    <img src="/upi-qr.png" alt="UPI QR Code" className="w-40 h-40 object-contain rounded-xl" />
+                  {/* QR Code Container with Click Action to Auto Scroll */}
+                  <div 
+                    onClick={scrollToUtrInput}
+                    title="Tap to enter UTR Number"
+                    className="p-4 bg-white border-2 border-slate-300 rounded-3xl shadow-lg flex items-center justify-center w-full max-w-[384px] cursor-pointer hover:border-blue-500 transition-all group"
+                  >
+                    <img 
+                      src="/upi-qr.jpeg" 
+                      alt="UPI QR Code" 
+                      className="w-80 h-80 sm:w-96 sm:h-96 object-contain rounded-xl aspect-square group-hover:scale-[1.02] transition-transform" 
+                    />
                   </div>
 
                   <div>
-                    <p className="text-[11px] text-slate-500 font-bold uppercase tracking-wide">Amount to Pay:</p>
-                    <p className="text-2xl font-black text-slate-900">₹{selectedFee.amount}.00</p>
+                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wide">Amount to Pay:</p>
+                    <p className="text-3xl font-black text-slate-900">₹{selectedFee.amount}.00</p>
+                    <p className="text-[10px] font-semibold text-blue-600 mt-1 animate-pulse">
+                    After scanning, tap the QR code to enter the UTR number.
+                    </p>
                   </div>
                 </div>
 
-                <form onSubmit={handlePaymentSubmit} className="space-y-3">
+                <form onSubmit={handlePaymentSubmit} className="space-y-3 pt-2">
                   <div>
                     <label className="block text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">
                       {selectedFee.status === "REJECTED" ? "New Transaction UTR / Reference ID:" : "Transaction UTR / Reference ID:"}
                     </label>
                     <input 
+                      ref={utrInputRef}
                       type="text" 
                       placeholder="e.g. 4029XXXXXXXX (12 Digits)" 
                       value={utrNumber}
                       onChange={(e) => setUtrNumber(e.target.value)}
                       required
-                      className="w-full px-3 py-2.5 text-xs font-mono font-extrabold text-slate-800 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-700 bg-slate-50"
+                      className="w-full px-3 py-2.5 text-xs font-mono font-extrabold text-slate-800 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-700 focus:ring-2 focus:ring-blue-200 bg-slate-50 transition-all"
                     />
                   </div>
                   <button 
@@ -378,7 +400,7 @@ export default function StudentFeeDashboard() {
                       ? "SUBMITTING..." 
                       : selectedFee.status === "REJECTED" 
                         ? "🔄 PAY AGAIN & SUBMIT NEW UTR" 
-                        : "Submit Transaction Reference"
+                        : "Submit"
                     }
                   </button>
                 </form>
@@ -405,12 +427,11 @@ export default function StudentFeeDashboard() {
                   className="bg-white p-6 border border-slate-200 rounded-2xl font-sans text-slate-900 relative overflow-hidden space-y-5"
                   style={{ width: "100%", boxSizing: "border-box" }}
                 >
-                  {/* Subtle Background Watermark */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none select-none">
                     <h1 className="text-7xl font-black tracking-widest text-slate-900 rotate-12 uppercase">VIRAAM VAANI</h1>
                   </div>
 
-                  {/* 1. Header Section */}
+                  {/* Header */}
                   <div className="flex justify-between items-center border-b border-slate-200 pb-4 relative z-10">
                     <div className="flex items-center gap-3">
                       <div className="w-11 h-11 border border-slate-200 rounded-xl flex items-center justify-center overflow-hidden shrink-0 bg-slate-50">
@@ -429,7 +450,7 @@ export default function StudentFeeDashboard() {
                     </div>
                   </div>
 
-                  {/* 2. Student & Billing Grid */}
+                  {/* Student & Billing Grid */}
                   <div className="grid grid-cols-2 gap-4 text-xs p-3.5 bg-slate-50/80 rounded-xl border border-slate-200/80 relative z-10">
                     <div className="space-y-1">
                       <p className="text-slate-400 font-bold text-[9px] uppercase tracking-wider">STUDENT INFORMATION</p>
@@ -452,7 +473,7 @@ export default function StudentFeeDashboard() {
                     </div>
                   </div>
 
-                  {/* 3. Clean Fee Breakdown Table */}
+                  {/* Table Breakdown */}
                   <div className="relative z-10">
                     <table className="w-full text-left text-xs border-collapse">
                       <thead>
@@ -472,13 +493,13 @@ export default function StudentFeeDashboard() {
                     </table>
                   </div>
 
-                  {/* 4. Total Amount Bar */}
+                  {/* Total Amount Bar */}
                   <div className="flex justify-between items-center bg-gradient-to-r from-blue-700 to-blue-500 text-white px-4 py-3 rounded-xl relative z-10">
                     <span className="uppercase text-[10px] font-bold tracking-wider text-blue-100">Total Paid Amount:</span>
                     <span className="text-white text-base font-black">₹{selectedFee.amount}.00</span>
                   </div>
 
-                  {/* 5. Transaction Verification Box */}
+                  {/* Transaction Verification Box */}
                   <div className="border border-slate-200 bg-slate-50/50 p-3 rounded-xl text-[10px] space-y-1 relative z-10">
                     <p className="font-bold text-[9px] text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
                       <ShieldCheck size={12} className="text-emerald-600" /> Verification Particulars
@@ -489,7 +510,7 @@ export default function StudentFeeDashboard() {
                     </div>
                   </div>
 
-                  {/* 6. Footer - Stamp & Signature Area */}
+                  {/* Stamp & Signature Footer */}
                   <div className="pt-2 border-t border-slate-200 flex justify-between items-end relative z-10">
                     <div className="text-[9px] text-slate-400 space-y-0.5">
                       <p className="font-medium text-slate-500">Thank you for your prompt payment.</p>
@@ -497,30 +518,25 @@ export default function StudentFeeDashboard() {
                     </div>
 
                     <div className="relative flex flex-col items-center justify-end w-36 h-24">
-                      {/* Stamp Alignment */}
                       <div className="absolute top-0 right-1 w-24 h-24 pointer-events-none opacity-80 rotate-[-10deg] z-0">
                         <svg viewBox="0 0 100 100" className="w-full h-full text-[#c53030] fill-current">
                           <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="2" />
                           <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" strokeWidth="0.8" />
                           <circle cx="50" cy="50" r="32" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="2 1.5" />
-                          
                           <defs>
                             <path id="topTextArc" d="M 15,50 A 35,35 0 0,1 85,50" fill="none" />
                             <path id="bottomTextArc" d="M 12,50 A 38,38 0 0,0 88,50" fill="none" />
                           </defs>
-
                           <text fontSize="7.5" fontWeight="900" letterSpacing="1.2" fill="currentColor">
                             <textPath href="#topTextArc" startOffset="50%" textAnchor="middle" dy="-2">
                               ★ VIRAAM ★
                             </textPath>
                           </text>
-
                           <text fontSize="7.5" fontWeight="900" letterSpacing="1.2" fill="currentColor">
                             <textPath href="#bottomTextArc" startOffset="50%" textAnchor="middle" dy="6">
                               ★ VAANI ★
                             </textPath>
                           </text>
-
                           <line x1="8" y1="39" x2="92" y2="39" stroke="currentColor" strokeWidth="1" />
                           <line x1="8" y1="58" x2="92" y2="58" stroke="currentColor" strokeWidth="1" />
                           <text x="50" y="51" fontSize="9" fontWeight="900" fill="currentColor" textAnchor="middle" letterSpacing="1.5">
@@ -529,7 +545,6 @@ export default function StudentFeeDashboard() {
                         </svg>
                       </div>
 
-                      {/* Signature Overlay */}
                       <div className="relative z-10 w-full text-center flex flex-col items-center">
                         <div className="h-7 flex items-end justify-center mb-1">
                           <span className="font-serif italic text-base font-bold text-slate-800 tracking-tighter -rotate-3 select-none">
