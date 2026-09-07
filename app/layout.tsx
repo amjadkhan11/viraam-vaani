@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://viraam-vaani.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://viraamvaani.in";
 
 const OG_IMAGE = `${SITE_URL}/og-image.png`; // Make sure this file exists in /public
 
