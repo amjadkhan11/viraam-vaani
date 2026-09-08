@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Viraam Vaani is a trusted coaching institute offering quality education, study materials, online tests, results, and student portal.",
+    "Viraam Vaani is a Center of learning and growth, dedicated to nurturing minds with knowledge, values, and innovation. Our mission is to inspire students...",
 
   keywords: [
     "Viraam Vaani",
