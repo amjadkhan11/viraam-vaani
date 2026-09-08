@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://viraamvaani.in";
 
-const OG_IMAGE = `${SITE_URL}/og-image.png`; // Make sure this file exists in /public
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     template: "%s | Viraam Vaani",
   },
 
+  // 1. Live Google search result ka text yahan se badle:
   description:
     "Viraam Vaani is a Center of learning and growth, dedicated to nurturing minds with knowledge, values, and innovation. Our mission is to inspire students...",
 
@@ -57,7 +58,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Viraam Vaani",
-    description: "A New Ray of Hope",
+    description: "Viraam Vaani is a Center of learning and growth...",
     url: SITE_URL,
     siteName: "Viraam Vaani",
     locale: "en_IN",
@@ -75,12 +76,15 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Viraam Vaani",
-    description: "A New Ray of Hope",
+    description: "Viraam Vaani is a Center of learning and growth...",
     images: [OG_IMAGE],
   },
 
+  // 2. Favicon / Logo Setup:
   icons: {
-    icon: "/images/logo.jpeg",
+    icon: [
+      { url: "/images/logo.jpeg", type: "image/jpeg" },
+    ],
     shortcut: "/images/logo.jpeg",
     apple: "/images/logo.jpeg",
   },
