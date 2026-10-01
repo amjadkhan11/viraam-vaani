@@ -198,17 +198,24 @@ export default function AdminDashboardPage() {
               <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border border-slate-200">
                 <Filter size={14} className="text-slate-400" />
                 <select 
-                  value={selectedClass} 
-                  onChange={(e) => setSelectedClass(e.target.value)}
-                  className="bg-transparent text-xs font-bold outline-none text-slate-700 cursor-pointer"
-                >
-                  <option value="ALL">All Classes</option>
-                  <option value="8th">8th Class</option>
-                  <option value="9th">9th Class</option>
-                  <option value="10th">10th Class</option>
-                  <option value="11th">11th Class</option>
-                  <option value="12th">12th Class</option>
-                </select>
+  value={selectedClass} 
+  onChange={(e) => setSelectedClass(e.target.value)}
+  className="bg-transparent text-xs font-bold outline-none text-slate-700 cursor-pointer"
+>
+  <option value="ALL">All Classes</option>
+  <option value="1st">1st Class</option>
+  <option value="2nd">2nd Class</option>
+  <option value="3rd">3rd Class</option>
+  <option value="4th">4th Class</option>
+  <option value="5th">5th Class</option>
+  <option value="6th">6th Class</option>
+  <option value="7th">7th Class</option>
+  <option value="8th">8th Class</option>
+  <option value="9th">9th Class</option>
+  <option value="10th">10th Class</option>
+  <option value="11th">11th Class</option>
+  <option value="12th">12th Class</option>
+</select>
               </div>
 
               <button 
